@@ -1,0 +1,7 @@
+D:\Programming\3D Programming\Framework 1.0\SlimFrame\bin\Debug\Cube\Assets\UI\UI.png
+D:\Programming\3D Programming\Framework 1.0\SlimFrame\bin\Debug\Cube\SlimFrame.dll
+D:\Programming\3D Programming\Framework 1.0\SlimFrame\bin\Debug\Cube\SlimFrame.pdb
+D:\Programming\3D Programming\Framework 1.0\SlimFrame\SlimFrame\obj\Debug\SlimFrame.csproj.CoreCompileInputs.cache
+D:\Programming\3D Programming\Framework 1.0\SlimFrame\SlimFrame\obj\Debug\SlimFrame.dll
+D:\Programming\3D Programming\Framework 1.0\SlimFrame\SlimFrame\obj\Debug\SlimFrame.pdb
+D:\Programming\3D Programming\Framework 1.0\SlimFrame\SlimFrame\obj\Debug\SlimFrame.csprojAssemblyReference.cache

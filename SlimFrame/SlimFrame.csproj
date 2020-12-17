@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EB3F867B-94C7-4882-8FB0-57DC2E9BBCAA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SlimFrame</RootNamespace>
+    <AssemblyName>SlimFrame</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Debug\Cube</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\bin\x64\Debug\Cube</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>..\bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\bin\x86\Debug\Cube</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>..\bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="SlimDX, Version=4.0.13.43, Culture=neutral, PublicKeyToken=b1b0c32fd1ffe4f9">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\SlimDX SDK (January 2012)\Bin\net40\$(PlatformTarget)\SlimDX.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Buffers\ConstantBuffer.cs" />
+    <Compile Include="Buffers\MaterialBuffer.cs" />
+    <Compile Include="Buffers\RenderBuffer.cs" />
+    <Compile Include="Buffers\WVPBuffer.cs" />
+    <Compile Include="Cameras\Camera.cs" />
+    <Compile Include="Cameras\FirstPersonCamera.cs" />
+    <Compile Include="Cameras\ThirdPersonCamera.cs" />
+    <Compile Include="Models\ManipulateCollada.cs" />
+    <Compile Include="Models\Manipulate3DS.cs" />
+    <Compile Include="Models\ManipulateObj.cs" />
+    <Compile Include="Models\MaterialBase.cs" />
+    <Compile Include="Models\ModelHandler.cs" />
+    <Compile Include="Models\Object3D.cs" />
+    <Compile Include="Models\ObjectBase.cs" />
+    <Compile Include="Windows\GameWindow.cs" />
+    <Compile Include="Windows\GameWindow3D.cs" />
+    <Compile Include="Buffers\MatrixBuffer.cs" />
+    <Compile Include="Models\Material.cs" />
+    <Compile Include="Models\Model.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\DXComboBox.cs" />
+    <Compile Include="UI\DXButton.cs" />
+    <Compile Include="UI\DXContolImages.cs" />
+    <Compile Include="UI\DXPictureBox.cs" />
+    <Compile Include="UI\DXRadioButton.cs" />
+    <Compile Include="UI\DXCheckBox.cs" />
+    <Compile Include="UI\DXContainerControl.cs" />
+    <Compile Include="UI\Interfaces.cs" />
+    <Compile Include="UI\DXScroller.cs" />
+    <Compile Include="UI\DXSlider.cs" />
+    <Compile Include="2D System\System2D.cs" />
+    <Compile Include="UI\DXControl.cs" />
+    <Compile Include="UI\HUD.cs" />
+    <Compile Include="UI\DXLabel.cs" />
+    <Compile Include="UserInput.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Icon.ico" />
+    <Content Include="Assets\UI\UI.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>start xcopy /Y "$(TargetDir)$(TargetName).dll" "$(SolutionDir)..\Shared\$(ConfigurationName)\"
+start xcopy /Y "$(TargetDir)UI.png" "$(SolutionDir)..\Shared\"
+start xcopy /Y "$(SolutionDir)\Cube\effectDx11.fx" "$(SolutionDir)..\Shared\"</PostBuildEvent>
+  </PropertyGroup>
+</Project>

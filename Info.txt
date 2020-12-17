@@ -1,0 +1,33 @@
+Created according to the Book :
+	-> "Game Development  with SlimDX"	By Michael Fontanini
+hey, Niyu! Do you know how much I love you, mari jaan. I got nothing without you. I have no meaning without you. But, why are you not accepting this? Why are you against me? Why do you not talking with me? Why are you not chatting with me? Why are you not giving me permission to call you?
+
+07:30 PM 17-04-2020:
+	- There should be a layout class for handling the layout of the control in the HOD.
+	- There should be a UI editor class. UI editor implementation will be good the layout implemetation. So, here is no need for layout class. But, the controls must have Anchor property to bound the control to the some of the window or parent boundaries.
+08:00 PM 17-04-2020:
+	- Currently there is no need for various Border styles. So, we should run on only on solid border.
+	- Implement padding( adding some space between content and boundary of the control ) in the control. √
+	- Inherit TextContainer class from Control class.
+08:00 PM 18-04-2020:
+	- Create interfaces for TextSupport, ValueSupport. To make sure necessory elements are added to the control. √
+23:30 24-04-2020:
+	- Saperate HOD from surface2D class but make HOD dependent on it. √
+12:00 PM 28-04-2020:
+	- Redundant calling is reduced
+	- Implementing Enabled of IEnabler Controls and visibled state of all controls.
+01:00 PM 29-04-2020:
+	- Some Redundant callings are reduced
+	- IEnabler is implemented at control base class level. And Enabled state is implemented for Controls. 
+10:00 PM 30-04-2020:
+	- Code Observation
+12:30 AM 02-05-2020:
+	- Check Update Method of Scroller, Slider √
+12:30 PM 04-05-2020:
+	- Add KeyBoard event in the farmework
+03:00 PM 11-06-2020:
+	- check why first control in HOD becomes disabled √
+	- Implement click event for HOD √
+	- Slow Down!!! slow down the slider √
+12:00 AM 30-06-2020:
+	- Implement code for loading material for obj mesh in Load method of ObjLoader class. Mesh loader code is previously implemented to get raw mesh data such as vertices, indices, etc. So, what is left is, to load mesh material and create our object based mesh system.
