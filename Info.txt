@@ -1,6 +1,5 @@
 Created according to the Book :
 	-> "Game Development  with SlimDX"	By Michael Fontanini
-hey, Niyu! Do you know how much I love you, mari jaan. I got nothing without you. I have no meaning without you. But, why are you not accepting this? Why are you against me? Why do you not talking with me? Why are you not chatting with me? Why are you not giving me permission to call you?
 
 07:30 PM 17-04-2020:
 	- There should be a layout class for handling the layout of the control in the HOD.

@@ -17,6 +17,13 @@ namespace SlimFrame.Models
     public class ManipulateObj
     {
 
+        /// <summary>
+        /// Generates name for duplicate name as name.xxx 
+        /// </summary>
+        /// <param name="name">Base name</param>
+        /// <param name="prefixNumber">No. of duplicate copy</param>
+        /// <param name="minNumberofDigit">Number of digits in name (i.e, 3 -> 000, 4-> 0000)</param>
+        /// <returns></returns>
         private static string GenerateName(string name, int prefixNumber, int minNumberofDigit)
         {
             string number = prefixNumber.ToString();
@@ -36,9 +43,10 @@ namespace SlimFrame.Models
 
             return name + "." + number;
         }
-
+        /// <summary>
+        /// Stream to the model file for loading model
+        /// </summary>
         public static FileStream file;
-
         /// <summary>
         /// Loads a wavefront (.obj) model to our model system.
         /// </summary>
@@ -478,6 +486,12 @@ namespace SlimFrame.Models
                 model.Materials.Add(new Material(device, mat));
             return model;
         }
+        /// <summary>
+        /// Loads color from color string
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="offset"></param>
+        /// <returns></returns>
         static private Color4 loadColor(string[] data, int offset = 1)
         {
             Color4 col = new Color4();
@@ -489,6 +503,12 @@ namespace SlimFrame.Models
             col.Alpha = 1.0f;
             return col;
         }
+        /// <summary>
+        /// Loads vector3 from string
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="offset"></param>
+        /// <returns></returns>
         static private Vector3 loadVector3(string[] data, int offset = 1)
         {
             Vector3 vec = new Vector3();
@@ -500,6 +520,12 @@ namespace SlimFrame.Models
             vec.Z = float.Parse(data[offset++]);
             return vec;
         }
+        /// <summary>
+        /// Loads Vector2 from string
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="offset"></param>
+        /// <returns></returns>
         static private Vector2 loadVector2(string[] data, int offset = 1)
         {
             Vector2 vec = new Vector2();

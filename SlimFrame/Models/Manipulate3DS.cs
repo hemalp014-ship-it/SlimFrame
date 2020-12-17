@@ -94,6 +94,9 @@ namespace SlimFrame.Models
 
         #endregion
 
+        /// <summary>
+        /// Stream to the model file to load model
+        /// </summary>
         public static FileStream file;
 
         /// <summary>
@@ -327,6 +330,15 @@ namespace SlimFrame.Models
             return model;
         }
 
+        /// <summary>
+        /// Adds an object to the model
+        /// </summary>
+        /// <param name="device">Direct3D 11 device</param>
+        /// <param name="model">Our model</param>
+        /// <param name="objData">Data of object</param>
+        /// <param name="positions">position vectors of object</param>
+        /// <param name="texCoords">texture coordinates of Object</param>
+        /// <param name="isRHCoordSys">helps us to interpret that the model is whether Right handed or not</param>
         private static void AddObject(SlimDX.Direct3D11.Device device, Model model, ObjectBase objData, Vector3[] positions,Vector2[] texCoords,bool isRHCoordSys)
         {
             if (objData != null)
@@ -386,6 +398,11 @@ namespace SlimFrame.Models
 
         //}
 
+        /// <summary>
+        /// reads string from binaryreader
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <returns></returns>
         private static string readString(BinaryReader reader)
         {
             var notacceptable = new byte[] { 34, 42, 47, 58, 60, 62, 63, 92, 124 };
@@ -503,7 +520,12 @@ namespace SlimFrame.Models
 
         //    return objects.ToArray();
         //}
-        
+        /// <summary>
+        /// Reads mapping coordinates List from the chunk
+        /// </summary>
+        /// <param name="chunk">mapping coordinates chunk</param>
+        /// <param name="reader">Binaryreader for reading the stream of model file</param>
+        /// <returns></returns>
         private static Vector2[] readMappingCoordinatesList(Chunk chunk, BinaryReader reader)
         {
             List<Vector2> texCoords = new List<Vector2>();
