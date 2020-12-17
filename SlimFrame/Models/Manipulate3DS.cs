@@ -539,6 +539,12 @@ namespace SlimFrame.Models
             return texCoords.ToArray();
         }
 
+        /// <summary>
+        /// Reads Face description from chunk
+        /// </summary>
+        /// <param name="chunk">Face description chunk</param>
+        /// <param name="reader">Binaryreader for reading the stream of model file</param>
+        /// <returns></returns>
         private static uint[] readFaceDescription(Chunk Face, BinaryReader reader)
         {
             //TODO: First read the face as this way: read integer, say it as faces count and read faces,
@@ -559,6 +565,12 @@ namespace SlimFrame.Models
             return indices.ToArray();
         }
 
+        /// <summary>
+        /// Reads Vertices list from chunk
+        /// </summary>
+        /// <param name="chunk">Vertices list chunk</param>
+        /// <param name="reader">Binaryreader for reading the stream of model file</param>
+        /// <returns></returns>
         private static Vector3[] readVerticesList(Chunk chunk, BinaryReader reader)
         {
             int verticeCount = reader.ReadUInt16();
@@ -626,6 +638,12 @@ namespace SlimFrame.Models
         //    model.Materials.Add(new Material(device, mat));
         //}
 
+        /// <summary>
+        /// Reads texture from chunk
+        /// </summary>
+        /// <param name="Texture">Texture chunk</param>
+        /// <param name="reader">Binaryreader for reading the stream of model file</param>
+        /// <returns></returns>
         private static string readTexture(Chunk Texture,BinaryReader reader)
         {
             string name = null;
@@ -644,6 +662,12 @@ namespace SlimFrame.Models
             } while (reader.BaseStream.Position < Texture.end);
             return name;
         }
+
+        /// <summary>
+        /// Reads color from model file
+        /// </summary>
+        /// <param name="reader">Binaryreader for reading the stream of model file</param>
+        /// <returns></returns>
         private static Color4 readColorChunk(BinaryReader reader)
         {
             Color4 color = new Color4();
@@ -667,6 +691,12 @@ namespace SlimFrame.Models
             
             return color;
         }
+
+        /// <summary>
+        /// Reads RGB color from model file
+        /// </summary>
+        /// <param name="reader">Binaryreader for reading the stream of model file</param>
+        /// <returns></returns>
         private static Color4 readColorRGB(BinaryReader reader)
         {
             return new Color4()
@@ -677,6 +707,12 @@ namespace SlimFrame.Models
                 Alpha = 1
             };
         }
+
+        /// <summary>
+        /// Reads True color from model file
+        /// </summary>
+        /// <param name="reader">Binaryreader for reading the stream of model file</param>
+        /// <returns></returns>
         private static Color4 readColorTrue(BinaryReader reader)
         {
             return Color.FromArgb(reader.ReadByte(), reader.ReadByte(), reader.ReadByte());
