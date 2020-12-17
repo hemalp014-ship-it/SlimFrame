@@ -1,7 +1,0 @@
-D:\Programming\3D Programming\Framework 1.0\SlimFrame\bin\x86\Release\Assets\UI\UI.png
-D:\Programming\3D Programming\Framework 1.0\SlimFrame\bin\x86\Release\SlimFrame.dll
-D:\Programming\3D Programming\Framework 1.0\SlimFrame\bin\x86\Release\SlimFrame.pdb
-D:\Programming\3D Programming\Framework 1.0\SlimFrame\SlimFrame\obj\x86\Release\SlimFrame.csprojAssemblyReference.cache
-D:\Programming\3D Programming\Framework 1.0\SlimFrame\SlimFrame\obj\x86\Release\SlimFrame.csproj.CoreCompileInputs.cache
-D:\Programming\3D Programming\Framework 1.0\SlimFrame\SlimFrame\obj\x86\Release\SlimFrame.dll
-D:\Programming\3D Programming\Framework 1.0\SlimFrame\SlimFrame\obj\x86\Release\SlimFrame.pdb
