@@ -142,6 +142,9 @@
     <Compile Include="UserInput.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Shaders\effectDx11.fx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Icon.ico" />
     <Content Include="Assets\UI\UI.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

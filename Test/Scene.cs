@@ -447,6 +447,7 @@ namespace Demo
                     m_modelTexSamplerState?.Dispose();
 
                     model?.Dispose();
+                    cube?.Dispose();
                     m_Sky?.Dispose();
                 }
                 disposedValue = true;

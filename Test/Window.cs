@@ -63,6 +63,9 @@ namespace Demo
                     isPressedR = UserInput.IsKeyPressed(SlimDX.DirectInput.Key.R);
 
                     UserInput.PauseInput();
+                    bool fullscreen = IsFullscreen;
+                    if (fullscreen)
+                        ToggleFullscreen();
 
                     OpenFileDialog openFile = new OpenFileDialog();
                     openFile.Filter = "Supported Models|*.3ds;*.obj;*.model";
@@ -126,6 +129,8 @@ namespace Demo
                     }
 
                     UserInput.ResumeInput();
+                    if (fullscreen)
+                        ToggleFullscreen();
                 }
                 else if (UserInput.IsKeyJustPressed(SlimDX.DirectInput.Key.S))
                 {
@@ -217,7 +222,6 @@ namespace Demo
                 ClientSize = new SizeF(200, HOD.Font.Height),
                 Maximum = 100f,
                 Value = 0.0f,
-                Increment = 1.0f,
                 Unit = "%",
             };
             trans.ValueChanged += trans_ValueChanged;
@@ -233,7 +237,6 @@ namespace Demo
                 Maximum = 2.72f,
                 Value = 1.33f,
                 Minimum = 1.0f,
-                Increment = 0.01f,
                 Unit = "",
             };
             refract.ValueChanged += Refract_ValueChanged;
@@ -248,7 +251,6 @@ namespace Demo
                 BackColor = Color.FromArgb(200, Color.White),
                 Maximum = 100.0f,
                 Value = 100,
-                Increment = 1.0f,
                 Unit = "%",
             };
             reflect.ValueChanged += Reflect_ValueChanged;
@@ -263,7 +265,6 @@ namespace Demo
                 BackColor = Color.FromArgb(200, Color.White),
                 Maximum = 100.0f,
                 Value = 0,
-                Increment = 1.0f,
                 Unit = "%",
                 Visible = false,
                 RoundingDigit = 5,

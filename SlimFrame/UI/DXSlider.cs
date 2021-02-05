@@ -13,6 +13,8 @@ using SlimDX.Direct2D;
 using System.Diagnostics;
 using SlimDX.D3DCompiler;
 
+using static Microsoft.VisualBasic.Devices.Mouse;
+
 namespace SlimFrame.UI
 {
     /// <summary>
@@ -37,8 +39,8 @@ namespace SlimFrame.UI
         private float m_width = 20;
         private float m_height = 20;
 
-        private float m_Increment = 0.25f;
-        private float m_smallIncrement = 0.05f;
+        private float m_IncrementFactor = 1.0f;
+        private float m_smallIncrementFactor = 0.1f;
 
         private bool m_useStaticPoniter = true;
         private bool m_TrackPoniter = false;
@@ -53,6 +55,7 @@ namespace SlimFrame.UI
 
         private string m_Unit;
 
+        private float WheelScrollFactor;
         #endregion
 
         #region Properties
@@ -117,14 +120,26 @@ namespace SlimFrame.UI
         }
 
         /// <summary>
-        /// Increment in value of scroller
+        /// Increment factor of value of scroller (per second)
         /// </summary>
-        public float Increment
+        public float IncrementFactor
         {
-            get{return m_Increment;}
+            get { return m_IncrementFactor; }
             set
             {
-                m_Increment = value;
+                m_IncrementFactor = value;
+                IncrementChanged?.Invoke(this);
+            }
+        }
+        /// <summary>
+        /// Small Increment factor of value of scroller (per second)
+        /// </summary>
+        public float smallIncrementFactor
+        {
+            get { return m_smallIncrementFactor; }
+            set
+            {
+                m_smallIncrementFactor = value;
                 IncrementChanged?.Invoke(this);
             }
         }
@@ -227,6 +242,9 @@ namespace SlimFrame.UI
         private void Init()
         {
 
+            var g = new Microsoft.VisualBasic.Devices.Mouse();
+            WheelScrollFactor = g.WheelScrollLines;
+        
             rectRound = new RectangleF();
             rectRoundBack = new RectangleF();
 
@@ -238,11 +256,11 @@ namespace SlimFrame.UI
 
             MouseOver += Slider_MouseOver;
 
-            MouseMove += Slider_MouseMove;
             MouseUp += Slider_MouseUp;
+            MouseMove += Slider_MouseMove;
 
-            LocationChanged += UpdateBack;
             SizeChanged += UpdateBack;
+            LocationChanged += UpdateBack;
 
             EnabledChanged += Slider_EnabledChanged;
             ForeColorChanged += Slider_ForeColorChanged;
@@ -266,6 +284,7 @@ namespace SlimFrame.UI
             MaximumChanged?.Invoke(this);
             MinimumChanged?.Invoke(this);
             IncrementChanged?.Invoke(this);
+
         }
 
         /// <summary>
@@ -335,13 +354,14 @@ namespace SlimFrame.UI
                     {
                         if (m_useStaticPoniter)
                         {
-                            if (Value + m_Increment / 2.0f < value)
+                            float increment = valueWidth * m_IncrementFactor * (float)frameTime;
+                            if (Value + increment / 2 < value)
                             {
-                                Value += m_Increment;
+                                Value += increment;
                             }
-                            else if (Value - m_Increment / 2.0f > value)
+                            else if (Value - increment / 2 > value)
                             {
-                                Value -= m_Increment;
+                                Value -= increment;
                             }
                         }
 
@@ -356,26 +376,27 @@ namespace SlimFrame.UI
 
             if (m_MouseOver && Math.Abs(input.MouseWheelMovement()) > 0)
             {
-                Value -= input.MouseWheelMovement() * 100.0f * (float)frameTime;
+
+                Value -= valueWidth * m_IncrementFactor / 10.0f / WheelScrollFactor * input.MouseWheelMovement() * (float)frameTime;
             }
 
             if (m_Focused)
             {
                 if (input.IsKeyPressed(Key.UpArrow))
                 {
-                    Value += m_smallIncrement;
+                    Value += valueWidth * m_smallIncrementFactor * (float)frameTime;
                 }
                 if (input.IsKeyPressed(Key.DownArrow))
                 {
-                    Value -= m_smallIncrement;
+                    Value -= valueWidth * m_smallIncrementFactor * (float)frameTime;
                 }
                 if (input.IsKeyPressed(Key.RightArrow))
                 {
-                    Value += m_Increment;
+                    Value += valueWidth * m_IncrementFactor * (float)frameTime;
                 }
                 if (input.IsKeyPressed(Key.LeftArrow))
                 {
-                    Value -= m_Increment;
+                    Value -= valueWidth * m_IncrementFactor * (float)frameTime;
                 }
             }
 

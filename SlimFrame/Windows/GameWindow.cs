@@ -311,6 +311,21 @@ namespace SlimFrame
         }
 
         /// <summary>
+        /// This function sets the fullscreen mode on.
+        /// </summary>
+        public virtual void OnFullscreen()
+        {
+            IsFullscreen = true;
+        }
+        /// <summary>
+        /// This function sets the fullscreen mode off.
+        /// </summary>
+        public virtual void OffFullScreen()
+        {
+            IsFullscreen = true;
+        }
+
+        /// <summary>
         /// Pauses the System
         /// </summary>
         public void Pause()
