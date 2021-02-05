@@ -751,10 +751,8 @@ namespace SlimFrame
 
         protected override void FocusLost()
         {
-            if (IsFullscreen)
+            if (IsFullscreen && !IsDisposed)
             {
-               //
-
                 if (m_SwapChain != null)
                     m_SwapChain.IsFullScreen = false;
             }

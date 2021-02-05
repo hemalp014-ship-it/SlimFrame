@@ -171,7 +171,7 @@ namespace Demo
         {
             InitScene(device, device.ImmediateContext);
 
-            Vsync = Vsync.One;
+            Vsync = Vsync.Immediate;
         }
 
         private void Window_DeviceDisposing()
@@ -216,45 +216,28 @@ namespace Demo
             trans = new DXSlider()
             {
                 Location = new PointF(10, state.Bottom + 10),
-                Text = "Transmissivity",
+                Text = "Linear ",
                 ForeColor = Color.Black,
                 BackColor = Color.FromArgb(200, Color.White),
                 ClientSize = new SizeF(200, HOD.Font.Height),
+                Type = DXSliderType.Linear,
                 Maximum = 100f,
                 Value = 0.0f,
-                Unit = "%",
-            };
-            trans.ValueChanged += trans_ValueChanged;
-            HOD.Add(trans);
-
-            refract = new DXSlider()
-            {
-                Location = new PointF(10, trans.Bottom + 10),
-                Text = "Refractivity",
-                ForeColor = Color.Black,
-                ClientSize = new SizeF(200, HOD.Font.Height),
-                BackColor = Color.FromArgb(200, Color.White),
-                Maximum = 2.72f,
-                Value = 1.33f,
-                Minimum = 1.0f,
                 Unit = "",
             };
-            refract.ValueChanged += Refract_ValueChanged;
-            HOD.Add(refract);
+            HOD.Add(trans);
 
-            reflect = new DXSlider()
+            combo = new DXComboBox()
             {
-                Location = new PointF(10, refract.Bottom + 10),
-                Text = "Reflectivity",
+                Location = new PointF(10, trans.Bottom + 10),
+                Text = "Slider Type",
                 ForeColor = Color.Black,
-                ClientSize = new SizeF(200, HOD.Font.Height),
                 BackColor = Color.FromArgb(200, Color.White),
-                Maximum = 100.0f,
-                Value = 100,
-                Unit = "%",
+                ClientSize = new SizeF(200, HOD.Font.Height),
+                
             };
-            reflect.ValueChanged += Reflect_ValueChanged;
-            HOD.Add(reflect);
+            combo.Items.AddRange(new string[]{"Linear","Exp e", "Exp 10" });
+            HOD.Add(combo);
 
             Loading = new DXSlider()
             {
@@ -269,32 +252,9 @@ namespace Demo
                 Visible = false,
                 RoundingDigit = 5,
             };
-            Loading.ValueChanged += Reflect_ValueChanged;
             HOD.Add(Loading);
         }
 
-        private void Reflect_ValueChanged(DXSlider s, float o)
-        {
-            if (scene.model != null)
-                foreach (Material mat in scene.model.Materials)
-                    mat.Reflectivity = s.Value / 100;
-        }
-
-        private void Refract_ValueChanged(DXSlider s, float o)
-        {
-            foreach (Material mat in scene.model.Materials)
-            {
-                mat.Refractivity = s.Value;
-            }
-        }
-
-        private void trans_ValueChanged(DXSlider s, float o)
-        {
-            foreach (Material mat in scene.model.Materials)
-            {
-                mat.Transparency = s.Value / 100;
-            }
-        }
 
         private void Window_Render(DeviceContext devCon)
         {            
@@ -308,6 +268,8 @@ namespace Demo
             scene.Update(frameTime);
             state.Text = "FPS : " + HOD.FramePerSecond;
 
+            Camera.Yaw += 0.0001f;
+
             if (UserInput.InputPaused)
                 return;
 
@@ -318,8 +280,8 @@ namespace Demo
 
         DXLabel state;
         DXSlider trans;
-        DXSlider refract;
-        DXSlider reflect;
+        DXComboBox combo;
+
         DXSlider Loading;
 
         #endregion

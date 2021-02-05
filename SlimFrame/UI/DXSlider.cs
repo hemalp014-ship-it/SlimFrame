@@ -13,10 +13,18 @@ using SlimDX.Direct2D;
 using System.Diagnostics;
 using SlimDX.D3DCompiler;
 
+using static System.Math;
 using static Microsoft.VisualBasic.Devices.Mouse;
 
 namespace SlimFrame.UI
 {
+
+    public enum DXSliderType
+    {
+        Linear,
+        ExponentialOf10,
+        ExponentialOfe,
+    }
     /// <summary>
     /// Slider : Visually reprensenting / changing value
     /// </summary>
@@ -24,6 +32,9 @@ namespace SlimFrame.UI
     {
 
         #region Member Variables
+
+        //Type of the Slider
+        private DXSliderType m_sliderType = DXSliderType.Linear;
 
         //Text allignment support.
         protected TextHAllignment m_textHAllignment; // Stores horizontal text allignment
@@ -60,6 +71,17 @@ namespace SlimFrame.UI
 
         #region Properties
 
+        public DXSliderType Type 
+        {
+            get { return m_sliderType; }
+            set
+            {
+                var val = Value;
+                m_sliderType = value;
+                m_Value = Transform(val);
+            }
+        }
+
         /// <summary>
         /// Unit of Value of the Slider 
         /// </summary>
@@ -74,10 +96,10 @@ namespace SlimFrame.UI
         /// </summary>
         public float Value
         {
-            get{return m_Value;}
+            get{return InverseTransform(m_Value);}
             set
             {
-                var temp = Math.Min(Math.Max(value, m_Minimum), m_Maximum);
+                var temp = Math.Min(Math.Max(Transform(value), m_Minimum), m_Maximum);
 
                 if (temp != m_Value)
                 {
@@ -98,10 +120,10 @@ namespace SlimFrame.UI
         /// </summary>
         public float Maximum
         {
-            get{return m_Maximum;}
+            get{return InverseTransform(m_Maximum); }
             set
             {
-                m_Maximum = value;
+                m_Maximum = Transform(value);
                 MaximumChanged?.Invoke(this);
             }
         }
@@ -111,16 +133,16 @@ namespace SlimFrame.UI
         /// </summary>
         public float Minimum
         {
-            get{return m_Minimum;}
+            get{return InverseTransform(m_Minimum);}
             set
             {
-                m_Minimum = value;
+                m_Minimum = Transform(value);
                 MinimumChanged?.Invoke(this);
             }
         }
 
         /// <summary>
-        /// Increment factor of value of scroller (per second)
+        /// Increment factor for value of scroller (per second)
         /// </summary>
         public float IncrementFactor
         {
@@ -132,7 +154,7 @@ namespace SlimFrame.UI
             }
         }
         /// <summary>
-        /// Small Increment factor of value of scroller (per second)
+        /// Small Increment factor for value of scroller (per second)
         /// </summary>
         public float smallIncrementFactor
         {
@@ -236,6 +258,50 @@ namespace SlimFrame.UI
 
         #region Methods
 
+        private float Transform(float value)
+        {
+            var o = 0.0f;
+
+            switch (Type)
+            {
+                case DXSliderType.Linear:
+                    o = value;
+                    break;
+                case DXSliderType.ExponentialOf10:
+                    o = (float) Log10(value);
+                    break;
+                case DXSliderType.ExponentialOfe:
+                    o = (float) Log(value);
+                    break;
+                default:
+                    break;
+            }
+
+            return o;
+        }
+
+        private float InverseTransform(float value)
+        {
+            var o = 0.0f;
+
+            switch (Type)
+            {
+                case DXSliderType.Linear:
+                    o = value;
+                    break;
+                case DXSliderType.ExponentialOf10:
+                    o = (float)Pow(10, value);
+                    break;
+                case DXSliderType.ExponentialOfe:
+                    o = (float)Pow(E, value);
+                    break;
+                default:
+                    break;
+            }
+
+            return o;
+        }
+
         /// <summary>
         /// Initializes the Slider
         /// </summary>
@@ -330,8 +396,7 @@ namespace SlimFrame.UI
 
             float reduceFactor = (-m_Minimum + m_Value) / valueWidth;
 
-            if (Value < Minimum || Value > Maximum)
-                return;
+            float oldValue = m_Value;
 
             x = reduceFactor * apperantWidth; //Use Max to set minimum value
 
@@ -355,13 +420,13 @@ namespace SlimFrame.UI
                         if (m_useStaticPoniter)
                         {
                             float increment = valueWidth * m_IncrementFactor * (float)frameTime;
-                            if (Value + increment / 2 < value)
+                            if (m_Value + increment / 2 < value)
                             {
-                                Value += increment;
+                                m_Value += increment;
                             }
-                            else if (Value - increment / 2 > value)
+                            else if (m_Value - increment / 2 > value)
                             {
-                                Value -= increment;
+                                m_Value -= increment;
                             }
                         }
 
@@ -370,36 +435,41 @@ namespace SlimFrame.UI
 
                 if (m_TrackPoniter && m_MouseOver && m_MouseDown)
                 {
-                    Value += (hod.MousePosition.X - hod.MousePositionOld.X) / apperantWidth * valueWidth;
+                    m_Value += (hod.MousePosition.X - hod.MousePositionOld.X) / apperantWidth * valueWidth;
                 }
             }
 
             if (m_MouseOver && Math.Abs(input.MouseWheelMovement()) > 0)
             {
 
-                Value -= valueWidth * m_IncrementFactor / 10.0f / WheelScrollFactor * input.MouseWheelMovement() * (float)frameTime;
+                m_Value -= valueWidth * m_IncrementFactor / 10.0f / WheelScrollFactor * input.MouseWheelMovement() * (float)frameTime;
             }
 
             if (m_Focused)
             {
                 if (input.IsKeyPressed(Key.UpArrow))
                 {
-                    Value += valueWidth * m_smallIncrementFactor * (float)frameTime;
+                    m_Value += valueWidth * m_smallIncrementFactor * (float)frameTime;
                 }
                 if (input.IsKeyPressed(Key.DownArrow))
                 {
-                    Value -= valueWidth * m_smallIncrementFactor * (float)frameTime;
+                    m_Value -= valueWidth * m_smallIncrementFactor * (float)frameTime;
                 }
                 if (input.IsKeyPressed(Key.RightArrow))
                 {
-                    Value += valueWidth * m_IncrementFactor * (float)frameTime;
+                    m_Value += valueWidth * m_IncrementFactor * (float)frameTime;
                 }
                 if (input.IsKeyPressed(Key.LeftArrow))
                 {
-                    Value -= valueWidth * m_IncrementFactor * (float)frameTime;
+                    m_Value -= valueWidth * m_IncrementFactor * (float)frameTime;
                 }
             }
 
+            if(oldValue!= m_Value)
+                m_Value = Max(Min(m_Value, m_Maximum), m_Minimum);
+            else
+                if(oldValue > m_Maximum | oldValue < m_Minimum)
+                    m_Value = Max(Min(m_Value, m_Maximum), m_Minimum);
         }
 
         #endregion
@@ -449,7 +519,7 @@ namespace SlimFrame.UI
 
             if (Math.Abs(input.MouseWheelMovement()) > 0)
             {
-                Value -= input.MouseWheelMovement() * 100.0f / apperantWidth * valueWidth / (float)hod.FramePerSecond;
+                m_Value -= input.MouseWheelMovement() * 100.0f / apperantWidth * valueWidth / (float)hod.FramePerSecond;
             }
         }
 

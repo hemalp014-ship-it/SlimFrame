@@ -62,6 +62,7 @@ namespace SlimFrame
 
             // Hook up event handlers so we can recieve events from the RenderForm Object.
             FormObject.FormClosed += FormClosed;
+            FormObject.FormClosing += FormClosing;
             FormObject.GotFocus += GotFocus;
             FormObject.LostFocus += LostFocus;
 
@@ -345,10 +346,15 @@ namespace SlimFrame
 
         #region Event Handler
 
-        private void FormClosed( Object sender, FormClosedEventArgs e)
+        private void FormClosed(Object sender, FormClosedEventArgs e)
         {
             if (!IsDisposed)
                 Dispose();
+        }
+        private void FormClosing(Object sender, FormClosingEventArgs e)
+        {
+            if (IsFullscreen)
+                OffFullScreen();
         }
 
         /// <summary>
@@ -393,7 +399,8 @@ namespace SlimFrame
                 if (disposing)
                 {
                     // Unregister events
-                    FormObject.FormClosed -= this.FormClosed;
+                    FormObject.FormClosed -= FormClosed;
+                    FormObject.FormClosing -= FormClosing;
 
                     m_UserInput.Dispose();
                 }
