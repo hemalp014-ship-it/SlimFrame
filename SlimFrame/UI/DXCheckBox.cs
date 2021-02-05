@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,7 +16,7 @@ namespace SlimFrame.UI
     /// <summary>
     /// CheckBox : Visually representing / changing checked state
     /// </summary>
-    public class DXCheckBox : DXControl, ITextControl
+    public class DXCheckBox : DXControl, ITextControl, IEnabler
     {
 
         #region Member Variables

@@ -261,10 +261,7 @@ namespace SlimFrame
         /// <param name="frameTime"></param>
         public virtual void Update(double frameTime)
         {
-            try
-            {
 
-            }
             // Get the latest user input.
             m_UserInput.Update();
 
