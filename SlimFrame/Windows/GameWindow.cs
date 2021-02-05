@@ -261,19 +261,25 @@ namespace SlimFrame
         /// <param name="frameTime"></param>
         public virtual void Update(double frameTime)
         {
-
+            if (m_UserInput.InputPaused)
+                return;
             // Get the latest user input.
             m_UserInput.Update();
 
+            if (m_UserInput.InputPaused)
+                return;
 
             // Toggle fullscreen mode.  
             if (m_UserInput.IsKeyJustPressed(Key.Return) && (m_UserInput.IsKeyPressed(Key.LeftAlt) || m_UserInput.IsKeyPressed(Key.RightAlt)))
                 ToggleFullscreen();
             else if (m_UserInput.IsKeyJustPressed(Key.Escape))   // Exit fullscreen if in fullscreen.    
             {
-                if(IsFullscreen)
+                if (IsFullscreen)
                     ToggleFullscreen();
             }
+
+            if (IsPaused)
+                return;
 
             if (cam != null)
                 UpdateCamera(frameTime); // Updates camera if it exists

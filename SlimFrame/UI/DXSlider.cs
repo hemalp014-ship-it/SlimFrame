@@ -18,7 +18,7 @@ namespace SlimFrame.UI
     /// <summary>
     /// Slider : Visually reprensenting / changing value
     /// </summary>
-    public class DXSlider : DXControl
+    public class DXSlider : DXControl, ITextControl, IEnabler
     {
 
         #region Member Variables
@@ -62,14 +62,8 @@ namespace SlimFrame.UI
         /// </summary>
         public string Unit
         {
-            get
-            {
-                return m_Unit;
-            }
-            set
-            {
-                m_Unit = value;
-            }
+            get{return m_Unit;}
+            set{m_Unit = value;}
         }
 
         /// <summary>
@@ -77,10 +71,7 @@ namespace SlimFrame.UI
         /// </summary>
         public float Value
         {
-            get
-            {
-                return m_Value;
-            }
+            get{return m_Value;}
             set
             {
                 var temp = Math.Min(Math.Max(value, m_Minimum), m_Maximum);
@@ -97,17 +88,14 @@ namespace SlimFrame.UI
         /// <summary>
         /// No. of digits to round off
         /// </summary>
-        public int RoundingDigit { get; set; }
+        public int RoundingDigit { get; set; } = 2;
 
         /// <summary>
         /// Maximum value of slider
         /// </summary>
         public float Maximum
         {
-            get
-            {
-                return m_Maximum;
-            }
+            get{return m_Maximum;}
             set
             {
                 m_Maximum = value;
@@ -120,10 +108,7 @@ namespace SlimFrame.UI
         /// </summary>
         public float Minimum
         {
-            get
-            {
-                return m_Minimum;
-            }
+            get{return m_Minimum;}
             set
             {
                 m_Minimum = value;
@@ -136,10 +121,7 @@ namespace SlimFrame.UI
         /// </summary>
         public float Increment
         {
-            get
-            {
-                return m_Increment;
-            }
+            get{return m_Increment;}
             set
             {
                 m_Increment = value;
@@ -152,10 +134,7 @@ namespace SlimFrame.UI
         /// </summary>
         public bool AutoSize
         {
-            get
-            {
-                return m_AutoSize;
-            }
+            get{return m_AutoSize;}
             set
             {
                 m_AutoSize = value;
@@ -167,14 +146,8 @@ namespace SlimFrame.UI
         /// </summary>
         public SizeF ClientSize
         {
-            get
-            {
-                return new SizeF(m_Size.Width, m_Size.Height - m_height - 2.0f + yOffset);
-            }
-            set
-            {
-                Size = new SizeF(value.Width, value.Height + m_height + 2.0f + yOffset);
-            }
+            get{return new SizeF(m_Size.Width, m_Size.Height - m_height - 2.0f + yOffset);}
+            set{Size = new SizeF(value.Width, value.Height + m_height + 2.0f + yOffset);}
         }
 
         /// <summary>
@@ -182,10 +155,7 @@ namespace SlimFrame.UI
         /// </summary>
         public TextHAllignment HorizontalAllignment
         {
-            get
-            {
-                return m_textHAllignment;
-            }
+            get{return m_textHAllignment;}
             set
             {
                 m_textHAllignment = value;
@@ -198,10 +168,7 @@ namespace SlimFrame.UI
         /// </summary>
         public TextVAllignment VerticalAllignment
         {
-            get
-            {
-                return m_textVAllignment;
-            }
+            get{return m_textVAllignment;}
             set
             {
                 m_textVAllignment = value;
@@ -219,12 +186,12 @@ namespace SlimFrame.UI
         public event Action<DXSlider, float> ValueChanged;
 
         /// <summary>
-        /// Occures when the value of Slider is changed
+        /// Occures when the maximum value of Slider is changed
         /// </summary>
         public event Action<DXSlider> MaximumChanged;
 
         /// <summary>
-        /// Occures when the value of Slider is changed
+        /// Occures when the minimum value of Slider is changed
         /// </summary>
         public event Action<DXSlider> MinimumChanged;
 
@@ -314,7 +281,7 @@ namespace SlimFrame.UI
             renderTarget.PushAxisAlignedClip(Bound, AntialiasMode.Aliased);
 
             m_brush.Color = ForeColor;
-            renderTarget.DrawText(m_Text + " : " + ((int) Value * Math.Pow(10,RoundingDigit)) / Math.Pow(10, RoundingDigit) + " " + Unit, m_textFormat, Bound, m_brush);
+            renderTarget.DrawText(m_Text + " : " + (int) (Value * Math.Pow(10,RoundingDigit)) / Math.Pow(10, RoundingDigit) + " " + Unit, m_textFormat, Bound, m_brush);
 
             ControlImage.DrawImage(renderTarget, ControlImage.SliderBase, rectRoundBack, CalculatedAlpha);
 
@@ -342,7 +309,7 @@ namespace SlimFrame.UI
             float apperantWidth = (ClientSize.Width - m_width);
             float valueWidth = (m_Maximum - m_Minimum);
 
-            float reduceFactor = m_Value / valueWidth;
+            float reduceFactor = (-m_Minimum + m_Value) / valueWidth;
 
             if (Value < Minimum || Value > Maximum)
                 return;
@@ -361,7 +328,7 @@ namespace SlimFrame.UI
 
             if (input.IsMouseButtonPressed(MouseButtons.Left))
             {
-                float value = (ParentHOD.MousePosition.X - m_Location.X - m_width / 2) / apperantWidth * valueWidth;
+                float value = m_Minimum + (ParentHOD.MousePosition.X - m_Location.X - m_width / 2) / apperantWidth * valueWidth;
 
                 if (hod.MousePosition.Y - m_Location.Y > ClientSize.Height)
                     if (m_MouseOver && m_MouseDown)

@@ -20,6 +20,18 @@ namespace SlimFrame
 
     #endregion
 
+    public class InputPausedException : InvalidOperationException
+    {
+        public InputPausedException()
+        {
+
+        }
+        public InputPausedException(string errorMessage) : base(errorMessage)
+        {
+            
+        }
+    }
+
     /// <summary>
     /// UserInput class handles the 
     /// </summary>
@@ -208,7 +220,7 @@ namespace SlimFrame
         private void CheckInputPaused()
         {
             if(InputPaused)
-                throw new InvalidOperationException("UserInput is accessed in Pause state!");
+                throw new InputPausedException("UserInput is accessed in Pause state!");
         }
 
         /// <summary>

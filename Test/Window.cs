@@ -89,7 +89,6 @@ namespace Demo
                                 scene.model = Model.FromFile(Device, openFile.FileName, Debug: true);
                             scene.model.Tranformation = Matrix.Identity;
 
-                            UserInput.ResumeInput();
                             process = false;
                         })).Start();
 
@@ -126,6 +125,7 @@ namespace Demo
                         })).Start();
                     }
 
+                    UserInput.ResumeInput();
                 }
                 else if (UserInput.IsKeyJustPressed(SlimDX.DirectInput.Key.S))
                 {
