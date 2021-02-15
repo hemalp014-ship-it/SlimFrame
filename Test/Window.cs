@@ -234,7 +234,6 @@ namespace Demo
                 ForeColor = Color.Black,
                 BackColor = Color.FromArgb(200, Color.White),
                 ClientSize = new SizeF(200, HOD.Font.Height),
-                
             };
             combo.Items.AddRange(new string[]{"Linear","Exp e", "Exp 10" });
             HOD.Add(combo);

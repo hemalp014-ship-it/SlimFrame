@@ -99,7 +99,7 @@ namespace SlimFrame.UI
             get{return InverseTransform(m_Value);}
             set
             {
-                var temp = Math.Min(Math.Max(Transform(value), m_Minimum), m_Maximum);
+                var temp = Min(Max(Transform(value), m_Minimum), m_Maximum);
 
                 if (temp != m_Value)
                 {
@@ -439,7 +439,7 @@ namespace SlimFrame.UI
                 }
             }
 
-            if (m_MouseOver && Math.Abs(input.MouseWheelMovement()) > 0)
+            if (m_MouseOver && Abs(input.MouseWheelMovement()) > 0)
             {
 
                 m_Value -= valueWidth * m_IncrementFactor / 10.0f / WheelScrollFactor * input.MouseWheelMovement() * (float)frameTime;
@@ -449,27 +449,30 @@ namespace SlimFrame.UI
             {
                 if (input.IsKeyPressed(Key.UpArrow))
                 {
-                    m_Value += valueWidth * m_smallIncrementFactor * (float)frameTime;
+                    m_Value += valueWidth * m_smallIncrementFactor * (float) frameTime;
                 }
                 if (input.IsKeyPressed(Key.DownArrow))
                 {
-                    m_Value -= valueWidth * m_smallIncrementFactor * (float)frameTime;
+                    m_Value -= valueWidth * m_smallIncrementFactor * (float) frameTime;
                 }
                 if (input.IsKeyPressed(Key.RightArrow))
                 {
-                    m_Value += valueWidth * m_IncrementFactor * (float)frameTime;
+                    m_Value += valueWidth * m_IncrementFactor * (float) frameTime;
                 }
                 if (input.IsKeyPressed(Key.LeftArrow))
                 {
-                    m_Value -= valueWidth * m_IncrementFactor * (float)frameTime;
+                    m_Value -= valueWidth * m_IncrementFactor * (float) frameTime;
                 }
             }
 
-            if(oldValue!= m_Value)
+            if (oldValue!= m_Value)
+            {
                 m_Value = Max(Min(m_Value, m_Maximum), m_Minimum);
+                ValueChanged?.Invoke(this, oldValue);
+            }
             else
                 if(oldValue > m_Maximum | oldValue < m_Minimum)
-                    m_Value = Max(Min(m_Value, m_Maximum), m_Minimum);
+                    m_Value = Max(Min(m_Value, m_Maximum), m_Minimum);  
         }
 
         #endregion
@@ -517,9 +520,9 @@ namespace SlimFrame.UI
             float apperantWidth = (ClientSize.Width - m_width);
             float valueWidth = (m_Maximum - m_Minimum);
 
-            if (Math.Abs(input.MouseWheelMovement()) > 0)
+            if (Abs(input.MouseWheelMovement()) > 0)
             {
-                m_Value -= input.MouseWheelMovement() * 100.0f / apperantWidth * valueWidth / (float)hod.FramePerSecond;
+                m_Value -= input.MouseWheelMovement() * 100.0f / apperantWidth * valueWidth / hod.FramePerSecond;
             }
         }
 

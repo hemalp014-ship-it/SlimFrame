@@ -1,5 +1,5 @@
-D:\Programming\3D Programming\Framework 1.0\SlimFrame\Test\bin\Debug\Assets\UI\UI.png
 D:\Programming\3D Programming\Framework 1.0\SlimFrame\Test\bin\Debug\Assets\Shaders\effectDx11.fx
+D:\Programming\3D Programming\Framework 1.0\SlimFrame\Test\bin\Debug\Assets\UI\UI.png
 D:\Programming\3D Programming\Framework 1.0\SlimFrame\Test\bin\Debug\Effects.fx
 D:\Programming\3D Programming\Framework 1.0\SlimFrame\Test\bin\Debug\Test.exe.config
 D:\Programming\3D Programming\Framework 1.0\SlimFrame\Test\bin\Debug\Test.exe
