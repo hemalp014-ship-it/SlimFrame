@@ -152,8 +152,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>start xcopy /Y "$(TargetDir)$(TargetName).dll" "$(SolutionDir)..\Shared\$(ConfigurationName)-$(PlatformTarget)\"
-start xcopy /Y "$(TargetDir)UI.png" "$(SolutionDir)..\Shared\"
-start xcopy /Y "$(SolutionDir)\Cube\effectDx11.fx" "$(SolutionDir)..\Shared\"</PostBuildEvent>
+    <PostBuildEvent>start xcopy /Y "$(TargetDir)$(TargetName).dll" "$(SolutionDir)..\..\Shared\$(ConfigurationName)\$(PlatformTarget)\"
+start xcopy /Y "$(TargetDir)UI.png" "$(SolutionDir)..\..\Shared\"
+start xcopy /Y "$(SolutionDir)\Cube\effectDx11.fx" "$(SolutionDir)..\..\Shared\"</PostBuildEvent>
   </PropertyGroup>
 </Project>
