@@ -309,7 +309,17 @@ namespace SlimFrame.UI
         {
 
             var g = new Microsoft.VisualBasic.Devices.Mouse();
-            WheelScrollFactor = g.WheelScrollLines;
+            try
+            {
+                WheelScrollFactor = g.WheelScrollLines;
+            }
+            catch (InvalidOperationException e)
+            {
+                if(e.Message.Contains("no") && e.Message.Contains("wheel"))
+                {
+                    WheelScrollFactor = 1;
+                }
+            }
         
             rectRound = new RectangleF();
             rectRoundBack = new RectangleF();

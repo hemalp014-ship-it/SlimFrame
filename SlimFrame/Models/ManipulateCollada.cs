@@ -28,7 +28,8 @@ namespace SlimFrame.Models
             public string Head;
             public List<string> Field;
             public List<string> Value;
-            public bool Inline; // It will be true for tag having ending with "/>" otherwise false
+            public bool Inline; // It will be true for tag ending with "/>" otherwise false
+            public List<Tag> Child;
         }
 
         /// <summary>
