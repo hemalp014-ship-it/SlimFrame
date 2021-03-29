@@ -51,9 +51,10 @@ namespace Demo.Buffer
     }
     public enum LightType : int
     {
-        Point,
-        Spot,
-        Dir,
+        None,   // No light 
+        Point,  // Point light, this light looks like a point light source
+        Spot,   // Spot light, this light looks like a spot light, light source
+        Dir,    // Directional light, this light looks like light which comes from a very far source, but yet having good amount of luminosity also a this far distant i.e, light from the Sun or stars
     }
 
     public class LightBuffer : ConstantBuffer

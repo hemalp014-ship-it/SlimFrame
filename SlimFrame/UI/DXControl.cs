@@ -23,9 +23,10 @@ namespace SlimFrame.UI
     /// </summary>
     public enum TextHAllignment
     {
-        Left = DW.TextAlignment.Leading,
-        Center = DW.TextAlignment.Center,
-        Right = DW.TextAlignment.Trailing,
+        Default,                            // Default horizontal allignment
+        Left = DW.TextAlignment.Leading,    // Left horizontal allignment
+        Center = DW.TextAlignment.Center,   // Center horizontal allignment
+        Right = DW.TextAlignment.Trailing,  // Right horizontal allignment
     }
 
     /// <summary>
@@ -33,16 +34,18 @@ namespace SlimFrame.UI
     /// </summary>
     public enum TextVAllignment
     {
-        Top = DW.ParagraphAlignment.Near,
-        Center = DW.ParagraphAlignment.Center,
-        Bottom = DW.ParagraphAlignment.Far,
+        Default,                                // Default vertical allignment
+        Top = DW.ParagraphAlignment.Near,       // Top vertical allignment
+        Center = DW.ParagraphAlignment.Center,  // Center vertical allignment
+        Bottom = DW.ParagraphAlignment.Far,     // Bottom vertical allignment
     }
 
     enum MouseEffectState
     {
-        Out = 80,
-        Over = 95,
-        Down = 100,
+        None,       // No mouse effect
+        Out = 80,   // mouse effect when pointer is away an object
+        Over = 95,  // mouse effect when pointer is over an object
+        Down = 100, // mouse effect when pointer is over an object with left button of mouse is pressed
     }
 
     #endregion

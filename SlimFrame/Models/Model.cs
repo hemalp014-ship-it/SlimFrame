@@ -56,9 +56,9 @@ namespace SlimFrame.Models
     /// </summary>
     public enum TextureType : int
     {
-        None = -1,
-        texture2D = 0,
-        texture3D,
+        None = -1,      // No texture is associated
+        texture2D = 0,  // 2D texture is associated
+        texture3D,      // 3D texture is associated
     }
 
     /// <summary>

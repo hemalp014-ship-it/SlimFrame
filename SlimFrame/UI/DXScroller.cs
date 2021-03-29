@@ -14,8 +14,9 @@ namespace SlimFrame.UI
 {
     public enum ScrollOrientation
     {
-        Horizontal,
-        Vertical
+        NotInitiated,   // Scroller not initiated
+        Horizontal,     // Horizontal scroller
+        Vertical        // Vertical scroller
     }
 
     /// <summary>

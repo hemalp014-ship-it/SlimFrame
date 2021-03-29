@@ -28,10 +28,11 @@ namespace SlimFrame
     /// </summary>
     public enum Vsync
     {
-        Immediate,
-        One = 1,
-        Two = 2,
-        Three = 4,
+        Immediate,      //Uses maximum available Refresh rate
+        One = 1,        //Uses Refresh rate equal to that of a monitor
+        Two = 2,        //Uses Refresh rate, that is half of that of a monitor
+        Three = 4,      //Uses Refresh rate, that is quater of that of a monitor
+        NotSpecified,   //Vsync not specified
     }
 
     /// <summary>

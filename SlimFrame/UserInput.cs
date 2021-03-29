@@ -13,9 +13,10 @@ namespace SlimFrame
 
     public enum MouseButtons
     {
-        Left = 0,
-        Right = 1,
-        Center = 2,
+        None = -1,  // No mouse button involved
+        Left = 0,   // Left mouse button involved
+        Right = 1,  // Right mouse button involved
+        Center = 2, // Center mouse button or in other words the mouse wheel press in involved
     }
 
     #endregion

@@ -21,9 +21,10 @@ namespace SlimFrame.UI
 
     public enum DXSliderType
     {
-        Linear,
-        ExponentialOf10,
-        ExponentialOfe,
+        NonInitiated,   // Slider is not initiated
+        Linear,         // Value increases linearly with the sliding of the pointer in right direction
+        ExponentialOf10,// Value increases as an exponent of 10 with the sliding of the pointer in right direction
+        ExponentialOfe, // Value increases as an exponent of e with the sliding of the pointer in right direction
     }
     /// <summary>
     /// Slider : Visually reprensenting / changing value
@@ -43,6 +44,7 @@ namespace SlimFrame.UI
         protected bool m_AutoSize = false; // Stores auto size state of label
 
         private float m_Value;
+        private string m_DisplayText;
 
         private float m_Minimum;
         private float m_Maximum;
@@ -376,7 +378,7 @@ namespace SlimFrame.UI
             renderTarget.PushAxisAlignedClip(Bound, AntialiasMode.Aliased);
 
             m_brush.Color = ForeColor;
-            renderTarget.DrawText(m_Text + " : " + (int) (Value * Math.Pow(10,RoundingDigit)) / Math.Pow(10, RoundingDigit) + " " + Unit, m_textFormat, Bound, m_brush);
+            renderTarget.DrawText(m_DisplayText, m_textFormat, Bound, m_brush);
 
             ControlImage.DrawImage(renderTarget, ControlImage.SliderBase, rectRoundBack, CalculatedAlpha);
 
@@ -478,11 +480,17 @@ namespace SlimFrame.UI
             if (oldValue!= m_Value)
             {
                 m_Value = Max(Min(m_Value, m_Maximum), m_Minimum);
+                m_DisplayText = m_Text + " : " + (int)(Value * Pow(10, RoundingDigit)) / Pow(10, RoundingDigit) + " " + Unit;
                 ValueChanged?.Invoke(this, oldValue);
             }
             else
-                if(oldValue > m_Maximum | oldValue < m_Minimum)
-                    m_Value = Max(Min(m_Value, m_Maximum), m_Minimum);  
+            {
+                if (oldValue > m_Maximum | oldValue < m_Minimum)
+                {
+                    m_Value = Max(Min(m_Value, m_Maximum), m_Minimum);
+                    m_DisplayText = m_Text + " : " + (int)(Value * Pow(10, RoundingDigit)) / Pow(10, RoundingDigit) + " " + Unit;
+                }
+            }
         }
 
         #endregion
