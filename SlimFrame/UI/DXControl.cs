@@ -112,6 +112,8 @@ namespace SlimFrame.UI
         protected float targetAlpha = 1.0f;    // Target Alpha value of background color
         protected bool m_UseDefaultAplhaAnimation = true;
 
+        protected int m_page = 0;
+
         #endregion
 
         #region Event System
@@ -227,6 +229,8 @@ namespace SlimFrame.UI
         /// Occures when the control is losts focus.
         /// </summary>
         protected event Action BoundChanged;
+
+        public event Action<int, int> pageChanged;
 
         #endregion
 
