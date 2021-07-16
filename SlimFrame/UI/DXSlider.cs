@@ -81,6 +81,8 @@ namespace SlimFrame.UI
                 var val = Value;
                 m_sliderType = value;
                 m_Value = Transform(val);
+
+                setDisplayText();
             }
         }
 
@@ -89,8 +91,12 @@ namespace SlimFrame.UI
         /// </summary>
         public string Unit
         {
-            get{return m_Unit;}
-            set{m_Unit = value;}
+            get { return m_Unit; }
+            set
+            {
+                m_Unit = value;
+                setDisplayText();
+            }
         }
 
         /// <summary>
@@ -108,6 +114,9 @@ namespace SlimFrame.UI
                     var old = m_Value;
                     m_Value = temp;
                     ValueChanged?.Invoke(this, old);
+
+                    setDisplayText();
+
                 }
             }
         }
@@ -304,6 +313,12 @@ namespace SlimFrame.UI
             return o;
         }
 
+        private void setDisplayText()
+        {
+            m_DisplayText = m_Text + " : " + (int)(Value * Pow(10, RoundingDigit)) / Pow(10, RoundingDigit) + " " + Unit;
+
+        }
+
         /// <summary>
         /// Initializes the Slider
         /// </summary>
@@ -331,6 +346,8 @@ namespace SlimFrame.UI
             m_BackEnabled = true;
             m_BorderEnabled = true;
             TabStop = true;
+
+            setDisplayText();
 
             MouseOver += Slider_MouseOver;
 
@@ -480,7 +497,7 @@ namespace SlimFrame.UI
             if (oldValue!= m_Value)
             {
                 m_Value = Max(Min(m_Value, m_Maximum), m_Minimum);
-                m_DisplayText = m_Text + " : " + (int)(Value * Pow(10, RoundingDigit)) / Pow(10, RoundingDigit) + " " + Unit;
+                setDisplayText();
                 ValueChanged?.Invoke(this, oldValue);
             }
             else
@@ -488,7 +505,7 @@ namespace SlimFrame.UI
                 if (oldValue > m_Maximum | oldValue < m_Minimum)
                 {
                     m_Value = Max(Min(m_Value, m_Maximum), m_Minimum);
-                    m_DisplayText = m_Text + " : " + (int)(Value * Pow(10, RoundingDigit)) / Pow(10, RoundingDigit) + " " + Unit;
+                    setDisplayText();
                 }
             }
         }

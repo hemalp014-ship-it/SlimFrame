@@ -1,0 +1,17 @@
+D:\Programming\3D Programming\Framework 1.0\Windows\SlimFrame\SlimFrame\Test\bin\x64\Release\Assets\Shaders\effectDx11.fx
+D:\Programming\3D Programming\Framework 1.0\Windows\SlimFrame\SlimFrame\Test\bin\x64\Release\Assets\UI\UI.png
+D:\Programming\3D Programming\Framework 1.0\Windows\SlimFrame\SlimFrame\Test\bin\x64\Release\Effects.fx
+D:\Programming\3D Programming\Framework 1.0\Windows\SlimFrame\SlimFrame\Test\bin\x64\Release\Test.exe.config
+D:\Programming\3D Programming\Framework 1.0\Windows\SlimFrame\SlimFrame\Test\bin\x64\Release\Test.exe
+D:\Programming\3D Programming\Framework 1.0\Windows\SlimFrame\SlimFrame\Test\bin\x64\Release\Test.pdb
+D:\Programming\3D Programming\Framework 1.0\Windows\SlimFrame\SlimFrame\Test\bin\x64\Release\SlimDX.dll
+D:\Programming\3D Programming\Framework 1.0\Windows\SlimFrame\SlimFrame\Test\bin\x64\Release\SlimFrame.dll
+D:\Programming\3D Programming\Framework 1.0\Windows\SlimFrame\SlimFrame\Test\bin\x64\Release\SlimFrame.pdb
+D:\Programming\3D Programming\Framework 1.0\Windows\SlimFrame\SlimFrame\Test\bin\x64\Release\SlimDX.pdb
+D:\Programming\3D Programming\Framework 1.0\Windows\SlimFrame\SlimFrame\Test\bin\x64\Release\SlimDX.xml
+D:\Programming\3D Programming\Framework 1.0\Windows\SlimFrame\SlimFrame\Test\obj\x64\Release\Test.Properties.Resources.resources
+D:\Programming\3D Programming\Framework 1.0\Windows\SlimFrame\SlimFrame\Test\obj\x64\Release\Test.csproj.GenerateResource.cache
+D:\Programming\3D Programming\Framework 1.0\Windows\SlimFrame\SlimFrame\Test\obj\x64\Release\Test.csproj.CoreCompileInputs.cache
+D:\Programming\3D Programming\Framework 1.0\Windows\SlimFrame\SlimFrame\Test\obj\x64\Release\Test.csproj.CopyComplete
+D:\Programming\3D Programming\Framework 1.0\Windows\SlimFrame\SlimFrame\Test\obj\x64\Release\Test.exe
+D:\Programming\3D Programming\Framework 1.0\Windows\SlimFrame\SlimFrame\Test\obj\x64\Release\Test.pdb

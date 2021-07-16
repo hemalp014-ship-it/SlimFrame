@@ -48,7 +48,7 @@ namespace Demo
             deviceContext = Device.ImmediateContext;
 
             m_Window = window;
-            SkyBox = Model.FromFile(device, Application.StartupPath + "\\..\\..\\..\\..\\My Models\\SkyDayBox1.model");
+            SkyBox = Model.FromFile(device, Application.StartupPath + "\\..\\..\\..\\..\\..\\My Models\\SkyDayBox1.model");
             SkyBox.Tranformation = Matrix.Scaling(10, 10, 10) * Matrix.Translation(0, 0, 0);
         }
 

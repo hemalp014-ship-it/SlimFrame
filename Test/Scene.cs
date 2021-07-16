@@ -116,8 +116,8 @@ namespace Demo
         /// </summary>
         public void InitScene()
         {
-            model = Model.FromFile(device, Application.StartupPath + "\\..\\..\\..\\..\\My Models\\Boy\\Boy.model");
-            cube = Model.FromFile(device, Application.StartupPath +"\\..\\..\\..\\..\\My Models\\Cube.model");
+            model = Model.FromFile(device, Application.StartupPath + "\\..\\..\\..\\..\\..\\My Models\\Boy\\Boy.model");
+            cube = Model.FromFile(device, Application.StartupPath +"\\..\\..\\..\\..\\..\\My Models\\Cube.model");
             //model = Model.FromFile(device, "Sphere.model");
             //model = Manipulate3DS.Load(device, "D:\\Programming\\3D Programming\\3D Object\\3Ds Mesh\\cube.3ds", Debug: true);
 
