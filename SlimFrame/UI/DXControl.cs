@@ -51,7 +51,7 @@ namespace SlimFrame.UI
     #endregion
 
     /// <summary>
-    /// The Control Class for Base of all HOD Control
+    /// The Control Class for Base of all Heads-Up Display Control
     /// </summary>
     public class DXControl : IDisposable, IEnabler
     {

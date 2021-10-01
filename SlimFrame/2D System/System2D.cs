@@ -89,7 +89,7 @@ namespace SlimFrame
         Surface surface;
         DXGI.Resource sharedResource;
 
-        HUD m_HOD;
+        HUD m_HUD;
 
         public GameWindow3D ParentWindow {get; protected set;}
 
@@ -104,15 +104,15 @@ namespace SlimFrame
         /// <summary>
         /// Hod member to handel the UI
         /// </summary>
-        public HUD HOD
+        public HUD HUD
         {
             get
             {
-                return m_HOD;
+                return m_HUD;
             }
             set
             {
-                m_HOD = value;
+                m_HUD = value;
             }
         }
 
@@ -332,7 +332,7 @@ namespace SlimFrame
         {
             if (!m_Initialized)
             {
-                m_HOD?.Init(dwFactory, d2Factory, d2drenderTarget);
+                m_HUD?.Init(dwFactory, d2Factory, d2drenderTarget);
                 m_Initialized = true;
             }
         }
@@ -404,7 +404,7 @@ namespace SlimFrame
         /// </summary>
         public void Update(double frameTime)
         {
-            HOD?.Update(frameTime);
+            HUD?.Update(frameTime);
         }
 
         /// <summary>
@@ -553,7 +553,7 @@ namespace SlimFrame
                     surface?.Dispose();
                     d2drenderTarget?.Dispose();
                     brushSolidWhite?.Dispose();
-                    m_HOD?.Dispose();
+                    m_HUD?.Dispose();
                     g?.Dispose();
                 }
 
