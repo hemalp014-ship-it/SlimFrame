@@ -118,47 +118,41 @@ namespace SlimFrame.UI
 
         #region Event System
 
-        public delegate void _MouseOver(DXControl ctrl);
         /// <summary>
         /// Occures when the mouse is over control.
         /// </summary>
-        public event _MouseOver MouseOver;
+        public event Action<DXControl> MouseOver;
 
-        public delegate void _MouseOut(DXControl ctrl);
         /// <summary>
         /// Occures when the mouse gones out of control.
         /// </summary>
-        public event _MouseOut MouseOut;
+        public event Action<DXControl> MouseOut;
 
-        public delegate void _MouseMove(DXControl ctrl, MouseState state, MouseState stateOld);
+        public delegate void _MouseData(DXControl ctrl, MouseState state, MouseState stateOld);
         /// <summary>
         /// Occures when the mouse moves.
         /// </summary>
-        public event _MouseMove MouseMove;
+        public event _MouseData MouseMove;
 
-        public delegate void _MouseUp(DXControl ctrl, MouseState state, MouseState stateOld);
         /// <summary>
         /// Occures when the mouse button released.
         /// </summary>
-        public event _MouseUp MouseUp;
+        public event _MouseData MouseUp;
 
-        public delegate void _MouseDown(DXControl ctrl, MouseState state, MouseState stateOld);
         /// <summary>
         /// Occures when the mouse is over control.
         /// </summary>
-        public event _MouseDown MouseDown;
+        public event _MouseData MouseDown;
 
-        public delegate void _Click(DXControl ctrl);
         /// <summary>
         /// Occures when the control is clicked.
         /// </summary>
-        public event _Click Click;
+        public event Action<DXControl> Click;
 
-        public delegate void _DoubleClick(DXControl ctrl);
         /// <summary>
         /// Occures when the control is double clicked by Mouse.
         /// </summary>
-        public event _DoubleClick DoubleClick;
+        public event Action<DXControl> DoubleClick;
 
         /// <summary>
         /// Occures when the control is double clicked by Mouse.
@@ -230,6 +224,9 @@ namespace SlimFrame.UI
         /// </summary>
         protected event Action BoundChanged;
 
+        /// <summary>
+        /// Occures when page/tab of UI is change
+        /// </summary>
         public event Action<int, int> pageChanged;
 
         #endregion
