@@ -191,14 +191,14 @@ namespace SlimFrame.UI
 
             Click += RadioButton_Click;
 
-            ForeColorChanged += RadioButton_ForeColorChanged;
+            TextColorChanged += RadioButton_TextColorChanged;
 
             UpdateCheck(this);
         }
 
-        private void RadioButton_ForeColorChanged(DXControl obj)
+        private void RadioButton_TextColorChanged(DXControl obj)
         {
-            FontRenderColor = m_ForeColor;
+            FontRenderColor = m_TextColor;
         }
 
         private void RadioButton_Click(DXControl ctrl)
@@ -234,7 +234,7 @@ namespace SlimFrame.UI
 
             renderTarget.PushAxisAlignedClip(Bound, AntialiasMode.Aliased);
 
-            m_brush.Color = ForeColor;
+            m_brush.Color = TextColor;
             renderTarget.DrawText(m_Text, m_textFormat, m_TextBoundary, m_brush);
 
             ControlImage.DrawImage(renderTarget, ControlImage.RadioButtonBase, radioBase, CalculatedAlpha);
@@ -291,14 +291,14 @@ namespace SlimFrame.UI
             if (Enabled)
             {
                 m_CheckBaseColor = Color.White;
-                m_ForeColor = FontRenderColor;
+                m_TextColor = FontRenderColor;
             }
             else
             {
                 m_CheckBaseColor = Color.DarkGray;
                 m_CheckBaseBorderColor = Color.DimGray;
 
-                m_ForeColor = Color.DarkGray;
+                m_TextColor = Color.DarkGray;
 
                 RadioButton_CheckChanged(null);
             }
@@ -366,7 +366,7 @@ namespace SlimFrame.UI
 
                 Click -= RadioButton_Click;
 
-                ForeColorChanged -= RadioButton_ForeColorChanged;
+                TextColorChanged -= RadioButton_TextColorChanged;
 
             }
 

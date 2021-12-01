@@ -132,7 +132,7 @@ namespace SlimFrame.UI
 
             if (!Visible) return;
 
-            m_brush.Color = ForeColor;
+            m_brush.Color = TextColor;
             renderTarget.DrawText(m_Text, m_textFormat, Bound, m_brush);
         }
 

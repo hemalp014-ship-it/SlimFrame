@@ -864,7 +864,7 @@ namespace SlimFrame
         //    slide = new Slider("slide1")
         //    {
         //        Text = "Value",
-        //        ForeColor = Color.Black,
+        //        TextColor = Color.Black,
         //        BackColor = Color.White,
         //        Location = new PointF(100, 50),
         //        ClientSize = new SizeF(150, HOD.Font.Height),
@@ -881,7 +881,7 @@ namespace SlimFrame
         //        Location = new PointF(0, 0),
         //        Height = HOD.Font.SizeInPoints,
         //        Width = FormObject.Width,
-        //        ForeColor = Color.Black,
+        //        TextColor = Color.Black,
         //    };
 
         //    vScroll = new Scroller("vScroll", UI.ScrollOrientation.Vertical)
@@ -914,7 +914,7 @@ namespace SlimFrame
         //    btn = new UI.Button("btn1")
         //    {
         //        Text = "Button",
-        //        ForeColor = Color.Black,
+        //        TextColor = Color.Black,
         //        BackColor = Color.DarkSlateBlue,
         //        Location = new PointF(100, 110),
         //        Size = new SizeF(100, HOD.Font.Height),
@@ -926,7 +926,7 @@ namespace SlimFrame
         //    combo = new UI.ComboBox("combo1")
         //    {
         //        Text = "Combo",
-        //        ForeColor = Color.Black,
+        //        TextColor = Color.Black,
         //        BackColor = Color.DarkSlateBlue,
         //        Location = new PointF(btn.Right + 10, 110),
         //        Size = new SizeF(100, HOD.Font.Height),
@@ -942,7 +942,7 @@ namespace SlimFrame
         //    radioBtn = new UI.RadioButton("rad1")
         //    {
         //        Text = "Enable",
-        //        ForeColor = Color.Black,
+        //        TextColor = Color.Black,
         //        Location = new PointF(100, 10),
         //        TabIndex = 0,
         //        HorizontalAllignment = TextHAllignment.Left,
@@ -953,7 +953,7 @@ namespace SlimFrame
         //    radioBtn1 = new UI.RadioButton("rad2")
         //    {
         //        Text = "Disable",
-        //        ForeColor = Color.Black,
+        //        TextColor = Color.Black,
         //        Location = new PointF(10, 10),
         //        TabIndex = 0,
         //        HorizontalAllignment = TextHAllignment.Left,
@@ -963,7 +963,7 @@ namespace SlimFrame
         //    check = new UI.CheckBox("CheckBox1")
         //    {
         //        Text = "Check",
-        //        ForeColor = Color.Black,
+        //        TextColor = Color.Black,
         //        Location = new PointF(10, 10),
         //        TabIndex = 0,
         //        HorizontalAllignment = TextHAllignment.Left,

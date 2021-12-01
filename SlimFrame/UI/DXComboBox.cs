@@ -305,7 +305,7 @@ namespace SlimFrame.UI
             LocationChanged += UpdateBack;
             EnabledChanged += ComboBox_Enabled;
 
-            ForeColorChanged += ComboBox_ForeColorChanged;
+            TextColorChanged += ComboBox_TextColorChanged;
             BackColorChanged += ComboBox_BackColorChanged;
 
             LostFocus += ComboBox_LostFocus;
@@ -400,7 +400,7 @@ namespace SlimFrame.UI
                 m_brush.Color = BorderColor;
                 renderTarget.DrawRectangle(m_brush, Body);
 
-                m_brush.Color = ForeColor;
+                m_brush.Color = TextColor;
                 for (int i = renderMin; i < renderMax; i++)
                 {
                     rect.X = Left + 3;
@@ -412,7 +412,7 @@ namespace SlimFrame.UI
                         renderTarget.FillRectangle(m_brush, rect);
                     }
 
-                    m_brush.Color = ForeColor;
+                    m_brush.Color = TextColor;
                     renderTarget.DrawText(Items[i], m_textFormat, rect, m_brush);
                 }
                 vScroll.Render(renderTarget);
@@ -640,12 +640,12 @@ namespace SlimFrame.UI
             if (Enabled)
             {
                 BackColor = BackRenderColor;
-                ForeColor = FontRenderColor.ToColor();
+                TextColor = FontRenderColor.ToColor();
             }
             else
             {
                 BackColor = Color.DimGray;
-                ForeColor = Color.DarkGray;
+                TextColor = Color.DarkGray;
             }
         }
 
@@ -727,10 +727,10 @@ namespace SlimFrame.UI
                 BackRenderColor = BackColor;
         }
 
-        private void ComboBox_ForeColorChanged(DXControl obj)
+        private void ComboBox_TextColorChanged(DXControl obj)
         {
             if (Enabled)
-                FontRenderColor = ForeColor;
+                FontRenderColor = TextColor;
         }
 
         private void ComboBox_MouseMove(DXControl ctrl, MouseState state, MouseState stateOld)

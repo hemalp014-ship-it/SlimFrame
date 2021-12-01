@@ -358,7 +358,7 @@ namespace SlimFrame.UI
             LocationChanged += UpdateBack;
 
             EnabledChanged += Slider_EnabledChanged;
-            ForeColorChanged += Slider_ForeColorChanged;
+            TextColorChanged += Slider_TextColorChanged;
         }
 
 
@@ -394,7 +394,7 @@ namespace SlimFrame.UI
 
             renderTarget.PushAxisAlignedClip(Bound, AntialiasMode.Aliased);
 
-            m_brush.Color = ForeColor;
+            m_brush.Color = TextColor;
             renderTarget.DrawText(m_DisplayText, m_textFormat, Bound, m_brush);
 
             ControlImage.DrawImage(renderTarget, ControlImage.SliderBase, rectRoundBack, CalculatedAlpha);
@@ -534,11 +534,11 @@ namespace SlimFrame.UI
         {
             if (Enabled)
             {
-                ForeColor = FontRenderColor;
+                TextColor = FontRenderColor;
             }
             else
             {
-                ForeColor = Color.DarkGray;
+                TextColor = Color.DarkGray;
             }
         }
 
@@ -561,10 +561,10 @@ namespace SlimFrame.UI
             }
         }
 
-        private void Slider_ForeColorChanged(DXControl c)
+        private void Slider_TextColorChanged(DXControl c)
         {
             if (Enabled)
-                FontRenderColor = ForeColor;
+                FontRenderColor = TextColor;
         }
 
         #endregion
@@ -587,7 +587,7 @@ namespace SlimFrame.UI
                 SizeChanged -= UpdateBack;
 
                 EnabledChanged -= Slider_EnabledChanged;
-                ForeColorChanged -= Slider_ForeColorChanged;
+                TextColorChanged -= Slider_TextColorChanged;
             }
             base.Dispose(disposing);
         }

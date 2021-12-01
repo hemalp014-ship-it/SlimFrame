@@ -135,7 +135,7 @@ namespace SlimFrame.UI
             TextChanged += ChangedText;
             EnabledChanged += Button_Enabled;
 
-            ForeColorChanged += Button_ForeColorChanged;
+            TextColorChanged += Button_TextColorChanged;
             BackColorChanged += Button_BackColorChanged;
         }
 
@@ -145,10 +145,10 @@ namespace SlimFrame.UI
                 BackRenderColor = BackColor;
         }
 
-        private void Button_ForeColorChanged(DXControl obj)
+        private void Button_TextColorChanged(DXControl obj)
         {
             if (Enabled)
-                FontRenderColor = ForeColor;
+                FontRenderColor = TextColor;
         }
 
         /// <summary>
@@ -178,7 +178,7 @@ namespace SlimFrame.UI
             renderTarget.PushAxisAlignedClip(Bound, AntialiasMode.Aliased);
             ControlImage.DrawImage(renderTarget, ControlImage.ButtonBase, ClientRectangle, CalculatedAlpha);
 
-            m_brush.Color = ForeColor;
+            m_brush.Color = TextColor;
             renderTarget.DrawText(m_Text, m_textFormat, Bound, m_brush);
 
             renderTarget.PopAxisAlignedClip();
@@ -254,12 +254,12 @@ namespace SlimFrame.UI
             if (Enabled)
             {
                 BackColor = BackRenderColor;
-                ForeColor = FontRenderColor;
+                TextColor = FontRenderColor;
             }
             else
             {
                 BackColor = Color.DimGray;
-                ForeColor = Color.DarkGray;
+                TextColor = Color.DarkGray;
             }
         }
 

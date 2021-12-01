@@ -188,14 +188,14 @@ namespace SlimFrame.UI
             MouseOver += CheckBox_MouseOver;
             MouseOut += CheckBox_MouseOut;
 
-            ForeColorChanged += CheckBox_ForeColorChanged;
+            TextColorChanged += CheckBox_TextColorChanged;
 
             UpdateCheck(this);
         }
 
-        private void CheckBox_ForeColorChanged(DXControl obj)
+        private void CheckBox_TextColorChanged(DXControl obj)
         {
-            FontRenderColor = m_ForeColor;
+            FontRenderColor = m_TextColor;
         }
 
         /// <summary>
@@ -226,7 +226,7 @@ namespace SlimFrame.UI
 
             renderTarget.PushAxisAlignedClip(Bound, AntialiasMode.Aliased);
 
-            m_brush.Color = ForeColor;
+            m_brush.Color = TextColor;
             renderTarget.DrawText(m_Text, m_textFormat, m_TextBoundary, m_brush);
 
             ControlImage.DrawImage(renderTarget, ControlImage.CheckBoxBase, checkBase, CalculatedAlpha);
@@ -272,14 +272,14 @@ namespace SlimFrame.UI
             if (Enabled)
             {
                 m_CheckBoxColor = Color.White;
-                m_ForeColor = FontRenderColor;
+                m_TextColor = FontRenderColor;
             }
             else
             {
                 m_CheckBoxColor = Color.DarkGray;
                 m_CheckBoxBorderColor = Color.DimGray;
 
-                m_ForeColor = Color.DarkGray;
+                m_TextColor = Color.DarkGray;
             }
         }
 

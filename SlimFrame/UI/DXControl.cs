@@ -79,7 +79,7 @@ namespace SlimFrame.UI
         protected int m_TabIndex;     // The TabIndex of the control.
 
         protected Color m_BorderColor = Color.White;        // The Color of the control
-        protected Color m_ForeColor = Color.White;        // The Color of the control
+        protected Color m_TextColor = Color.White;        // The Color of the control
         protected Color m_BackColor = Color.Transparent;  // The Color of the control
 
         protected float m_BorderWidth = 0.0f;     // Stores the width of control border.
@@ -197,7 +197,7 @@ namespace SlimFrame.UI
         /// <summary>
         /// Occures when the control is losts focus.
         /// </summary>
-        public event Action<DXControl> ForeColorChanged;
+        public event Action<DXControl> TextColorChanged;
 
         /// <summary>
         /// Occures when the control is losts focus.
@@ -621,18 +621,18 @@ namespace SlimFrame.UI
         /// <summary>
         /// Color of Text of the Control
         /// </summary>
-        public Color ForeColor
+        public Color TextColor
         {
             get
             {
-                return m_ForeColor;
+                return m_TextColor;
             }
             set
             {
-                if (m_ForeColor != value)
+                if (m_TextColor != value)
                 {
-                    m_ForeColor = value;
-                    ForeColorChanged?.Invoke(this);
+                    m_TextColor = value;
+                    TextColorChanged?.Invoke(this);
                 }
             }
         }
@@ -803,7 +803,7 @@ namespace SlimFrame.UI
             SizeChanged?.Invoke(this);
             LocationChanged?.Invoke(this);
             TextChanged?.Invoke(this);
-            ForeColorChanged?.Invoke(this);
+            TextColorChanged?.Invoke(this);
             BackColorChanged?.Invoke(this);
             VisibleChanged?.Invoke(this);
             EnabledChanged?.Invoke(this);
@@ -980,7 +980,7 @@ namespace SlimFrame.UI
             SelectPreviousControl(this, m_parentHOD);
         }
 
-        // Here, no need for using POint and rectangle type because the .NET framework will auto convert Point to PointF and Rectangle tyo RectangleF
+        // Here, no need for using Point and rectangle type because the .NET framework will auto convert Point to PointF and Rectangle to RectangleF
         public bool IntersectMouse(PointF mousePos, RectangleF rect)
         {
             if (mousePos.X >= rect.Left && mousePos.X <= rect.Right)
