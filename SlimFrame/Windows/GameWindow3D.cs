@@ -496,7 +496,7 @@ namespace SlimFrame
 
             HOD = new HUD();
 
-            m_System2D.HOD = HOD;
+            m_System2D.HUD = HOD;
             m_System2D.Init();
 
             Initialized2D?.Invoke(m_System2D.RenderTarget, m_System2D.Direct2DFactory);
