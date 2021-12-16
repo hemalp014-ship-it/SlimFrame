@@ -103,11 +103,11 @@ namespace Demo
                             Loading.Visible = true;
                             Loading.Value = 0;
 
-                            Loading.Width = HOD.Width;
+                            Loading.Width = HUD.Width;
                             Loading.HorizontalAllignment = TextHAllignment.Center;
-                            Loading.Top = HOD.Height / 2 - Loading.Height / 2;
+                            Loading.Top = HUD.Height / 2 - Loading.Height / 2;
 
-                            HOD.Enabled = false;
+                            HUD.Enabled = false;
 
                             while (process)
                             {
@@ -123,7 +123,7 @@ namespace Demo
 
                                 Thread.Sleep(10);
                             }
-                            HOD.Enabled = true;
+                            HUD.Enabled = true;
                             Loading.Visible = false;
                         })).Start();
                     }
@@ -189,8 +189,8 @@ namespace Demo
 
             if (Loading.Visible)
             {
-                Loading.Width = HOD.Width;
-                Loading.Top = HOD.Height / 2 - Loading.Height / 2;
+                Loading.Width = HUD.Width;
+                Loading.Top = HUD.Height / 2 - Loading.Height / 2;
             }
         }
 
@@ -201,49 +201,49 @@ namespace Demo
         
         private void Window_HODLoaded()
         {
-            HOD.Font = new Font("Microsoft Sans Serif", 16, FontStyle.Regular, GraphicsUnit.Pixel);
-            HOD.HighlightSelectedControl = false;
+            HUD.Font = new Font("Microsoft Sans Serif", 16, FontStyle.Regular, GraphicsUnit.Pixel);
+            HUD.HighlightSelectedControl = false;
 
             state = new DXLabel()
             {
                 Location = new PointF(10, 10),
                 Text = "FPS : -",
-                ForeColor = Color.Black,
+                TextColor = Color.Black,
                 BackColor = Color.FromArgb(200, Color.White),
             };
-            HOD.Add(state);
+            HUD.Add(state);
 
             trans = new DXSlider()
             {
                 Location = new PointF(10, state.Bottom + 10),
                 Text = "Linear ",
-                ForeColor = Color.Black,
+                TextColor = Color.Black,
                 BackColor = Color.FromArgb(200, Color.White),
-                ClientSize = new SizeF(200, HOD.Font.Height),
+                ClientSize = new SizeF(200, HUD.Font.Height),
                 Type = DXSliderType.Linear,
                 Maximum = 100f,
                 Value = 0.0f,
                 Unit = "",
             };
-            HOD.Add(trans);
+            HUD.Add(trans);
 
             combo = new DXComboBox()
             {
                 Location = new PointF(10, trans.Bottom + 10),
                 Text = "Slider Type",
-                ForeColor = Color.Black,
+                TextColor = Color.Black,
                 BackColor = Color.FromArgb(200, Color.White),
-                ClientSize = new SizeF(200, HOD.Font.Height),
+                ClientSize = new SizeF(200, HUD.Font.Height),
             };
             combo.Items.AddRange(new string[]{"Linear","Exp e", "Exp 10" });
-            HOD.Add(combo);
+            HUD.Add(combo);
 
             Loading = new DXSlider()
             {
-                Location = new PointF(0, HOD.Height / 2),
+                Location = new PointF(0, HUD.Height / 2),
                 Text = "Loading",
-                ForeColor = Color.Black,
-                ClientSize = new SizeF(200, HOD.Font.Height),
+                TextColor = Color.Black,
+                ClientSize = new SizeF(200, HUD.Font.Height),
                 BackColor = Color.FromArgb(200, Color.White),
                 Maximum = 100.0f,
                 Value = 0,
@@ -251,7 +251,7 @@ namespace Demo
                 Visible = false,
                 RoundingDigit = 5,
             };
-            HOD.Add(Loading);
+            HUD.Add(Loading);
         }
 
 
@@ -265,7 +265,7 @@ namespace Demo
         private void Window_Update(double frameTime)
         {
             scene.Update(frameTime);
-            state.Text = "FPS : " + HOD.FramePerSecond;
+            state.Text = "FPS : " + HUD.FramePerSecond;
 
             Camera.Yaw += 0.0001f;
 

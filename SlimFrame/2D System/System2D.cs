@@ -102,7 +102,7 @@ namespace SlimFrame
         #region Properties
 
         /// <summary>
-        /// Hod member to handel the UI
+        /// HUD member to handel the UI
         /// </summary>
         public HUD HUD
         {

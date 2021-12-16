@@ -13,7 +13,7 @@ using SlimDX.DirectInput;
 namespace SlimFrame.UI
 {
     /// <summary>
-    /// Heads Over Display (HOD) for rendering 2D overlays, UI, etc.
+    /// Heads Over Display (HUD) for rendering 2D overlays, UI, etc.
     /// </summary>
     public class HUD : DXContainerControl
     {
@@ -59,7 +59,7 @@ namespace SlimFrame.UI
         }
 
         /// <summary>
-        /// The Owner of the HOD, the form no which the HOD to be rendered.
+        /// The Owner of the HUD, the form no which the HUD to be rendered.
         /// </summary>
         public GameWindow Owner
         {
@@ -95,13 +95,11 @@ namespace SlimFrame.UI
         #region Constructor
 
         /// <summary>
-        /// Creates new instance of HOD
+        /// Creates new instance of HUD
         /// </summary>
         public HUD()
             : base()
         {
-
-
             Parent = null;
             ParentHOD = null;
 
@@ -110,7 +108,7 @@ namespace SlimFrame.UI
             m_BackEnabled = false;
             m_BorderWidth = 0.0f;
 
-            Name = "HOD";
+            Name = "HUD";
             m_font = new Font("Microsoft Sans Serif", 16);
         }
 
@@ -119,7 +117,7 @@ namespace SlimFrame.UI
         #region Public Methods
 
         /// <summary>
-        /// This helps the form to take owenership of the HOD
+        /// This helps the form to take owenership of the HUD
         /// </summary>
         /// <param name="form"></param>
         public void TakeOwnerShip(GameWindow window)
@@ -136,7 +134,7 @@ namespace SlimFrame.UI
 
 
         /// <summary>
-        /// Initializes the HOD
+        /// Initializes the HUD
         /// </summary>
         /// <param name="factory">DirectWrite factory for writing support</param>
         /// <param name="factory2D">Direct2D factory for rendering support</param>
@@ -147,7 +145,7 @@ namespace SlimFrame.UI
         }
 
         /// <summary>
-        /// Updates the HOD
+        /// Updates the HUD
         /// </summary>
         public override void Update(double frameTime)
         {
@@ -172,7 +170,7 @@ namespace SlimFrame.UI
 
         #region Disposal
         /// <summary>
-        /// Disposes the HOD
+        /// Disposes the HUD
         /// </summary>
         /// <param name="disposing"></param>
         protected override void Dispose(bool disposing)

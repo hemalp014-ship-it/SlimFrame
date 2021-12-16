@@ -197,8 +197,8 @@ namespace SlimFrame.UI
             if (!Enabled) return;
 
 
-            HUD hod = m_parentHOD;
-            UserInput input = hod.UserInput;
+            HUD HUD = m_parentHOD;
+            UserInput input = HUD.UserInput;
 
 
             if (input.IsKeyJustPressed(Key.Space) ||

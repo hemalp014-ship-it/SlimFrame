@@ -15,3 +15,4 @@ D:\Programming\3D Programming\Framework 1.0\Windows\SlimFrame\SlimFrame\Test\obj
 D:\Programming\3D Programming\Framework 1.0\Windows\SlimFrame\SlimFrame\Test\obj\x64\Debug\Test.csproj.CopyComplete
 D:\Programming\3D Programming\Framework 1.0\Windows\SlimFrame\SlimFrame\Test\obj\x64\Debug\Test.exe
 D:\Programming\3D Programming\Framework 1.0\Windows\SlimFrame\SlimFrame\Test\obj\x64\Debug\Test.pdb
+D:\Programming\3D Programming\Framework 1.0\Windows\SlimFrame\SlimFrame\Test\obj\x64\Debug\Test.csproj.AssemblyReference.cache

@@ -474,8 +474,8 @@ namespace SlimFrame.UI
                 m_Opened = m_Target != 0.0f;
             }
 
-            HUD hod = m_parentHOD;
-            UserInput input = hod.UserInput;
+            HUD HUD = m_parentHOD;
+            UserInput input = HUD.UserInput;
 
             if (m_Focused)
             {

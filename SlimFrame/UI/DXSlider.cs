@@ -414,8 +414,8 @@ namespace SlimFrame.UI
 
             if (!Visible) return;
 
-            HUD hod = m_parentHOD;
-            UserInput input = hod.UserInput;
+            HUD HUD = m_parentHOD;
+            UserInput input = HUD.UserInput;
             if (input.InputPaused) return;
 
             float x, y;
@@ -443,7 +443,7 @@ namespace SlimFrame.UI
             {
                 float value = m_Minimum + (ParentHOD.MousePosition.X - m_Location.X - m_width / 2) / apperantWidth * valueWidth;
 
-                if (hod.MousePosition.Y - m_Location.Y > ClientSize.Height)
+                if (HUD.MousePosition.Y - m_Location.Y > ClientSize.Height)
                     if (m_MouseOver && m_MouseDown)
                     {
                         if (m_useStaticPoniter)
@@ -464,7 +464,7 @@ namespace SlimFrame.UI
 
                 if (m_TrackPoniter && m_MouseOver && m_MouseDown)
                 {
-                    m_Value += (hod.MousePosition.X - hod.MousePositionOld.X) / apperantWidth * valueWidth;
+                    m_Value += (HUD.MousePosition.X - HUD.MousePositionOld.X) / apperantWidth * valueWidth;
                 }
             }
 
@@ -550,14 +550,14 @@ namespace SlimFrame.UI
 
         private void Slider_MouseOver(DXControl ctrl)
         {
-            HUD hod = m_parentHOD;
-            UserInput input = hod.UserInput;
+            HUD HUD = m_parentHOD;
+            UserInput input = HUD.UserInput;
             float apperantWidth = (ClientSize.Width - m_width);
             float valueWidth = (m_Maximum - m_Minimum);
 
             if (Abs(input.MouseWheelMovement()) > 0)
             {
-                m_Value -= input.MouseWheelMovement() * 100.0f / apperantWidth * valueWidth / hod.FramePerSecond;
+                m_Value -= input.MouseWheelMovement() * 100.0f / apperantWidth * valueWidth / HUD.FramePerSecond;
             }
         }
 

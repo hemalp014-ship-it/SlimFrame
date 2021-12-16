@@ -37,7 +37,7 @@ namespace SlimFrame.UI
         #region Properties
 
         /// <summary>
-        /// Active control of the HOD
+        /// Active control of the HUD
         /// </summary>
         public DXControl ActiveControl
         {
@@ -63,7 +63,7 @@ namespace SlimFrame.UI
         }
 
         /// <summary>
-        /// Selectable child controls of HOD
+        /// Selectable child controls of HUD
         /// </summary>
         public List<DXControl> ControlsSelectable
         {
@@ -73,7 +73,7 @@ namespace SlimFrame.UI
             }
         }
         /// <summary>
-        /// Child controls of the HOD
+        /// Child controls of the HUD
         /// </summary>
         public List<DXControl> Controls
         {
@@ -158,7 +158,7 @@ namespace SlimFrame.UI
 
 
         /// <summary>
-        /// Renders the HOD
+        /// Renders the HUD
         /// </summary>
         /// <param name="renderTarget">The Direct2D RenderTarget for rendering.</param>
         public override void Render(RenderTarget renderTarget)
@@ -193,7 +193,7 @@ namespace SlimFrame.UI
         }
 
         /// <summary>
-        /// Selects first Selectable Control, if exists otherwise selects the HOD
+        /// Selects first Selectable Control, if exists otherwise selects the HUD
         /// </summary>
         /// <returns>True if it succceds selecting first selectable control otherwise False</returns>
         public bool SelectFirstControl()
@@ -213,7 +213,7 @@ namespace SlimFrame.UI
         }
 
         /// <summary>
-        /// Selects last Selectable Control, if exists otherwise selects HOD itself
+        /// Selects last Selectable Control, if exists otherwise selects HUD itself
         /// </summary>
         /// <returns>returns true, if it succceds selecting last selectable control; otherwise returns false</returns>
         public bool SelectLastControl()
@@ -276,7 +276,7 @@ namespace SlimFrame.UI
         }
 
         /// <summary>
-        /// Updates the HOD
+        /// Updates the HUD
         /// </summary>
         public override void Update(double frameTime)
         {

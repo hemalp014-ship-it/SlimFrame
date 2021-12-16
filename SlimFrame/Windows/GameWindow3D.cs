@@ -109,7 +109,7 @@ namespace SlimFrame
         /// <summary>
         /// Heads on Display for the GameWindow3D
         /// </summary>
-        public HUD HOD { get; set; }
+        public HUD HUD { get; set; }
 
         /// <summary>
         /// 2D rendering system for GameWindow3D
@@ -236,7 +236,7 @@ namespace SlimFrame
         public event _SwapChainResized SwapChainResized;
 
         /// <summary>
-        /// Occures when HOD is Loaded. Generate, Arrange & Add your UI elements to HOD.
+        /// Occures when HUD is Loaded. Generate, Arrange & Add your UI elements to HUD.
         /// </summary>
         public event Action HODLoaded;
 
@@ -494,24 +494,24 @@ namespace SlimFrame
             m_System2D.Resized2D += M_System2D_Resized2D;
             m_System2D.BlendTransparent = BlendTransparent;
 
-            HOD = new HUD();
+            HUD = new HUD();
 
-            m_System2D.HUD = HOD;
+            m_System2D.HUD = HUD;
             m_System2D.Init();
 
             Initialized2D?.Invoke(m_System2D.RenderTarget, m_System2D.Direct2DFactory);
 
-            if (HOD != null)
+            if (HUD != null)
             {
                 HODLoaded?.Invoke();
-                HOD.UserInput = UserInput;
-                HOD.TakeOwnerShip(this);
+                HUD.UserInput = UserInput;
+                HUD.TakeOwnerShip(this);
             }
 
-            //HOD.Font = new Font("Microsoft Sans Serif", 16, FontStyle.Regular, GraphicsUnit.Pixel);
-            //HODCreated?.Invoke(HOD);
+            //HUD.Font = new Font("Microsoft Sans Serif", 16, FontStyle.Regular, GraphicsUnit.Pixel);
+            //HODCreated?.Invoke(HUD);
             //ClearColor = Color.Gray;
-            //HOD.TakeOwnerShip(FormObject);
+            //HUD.TakeOwnerShip(FormObject);
         }
 
         private void M_System2D_Releasing2D()
@@ -530,7 +530,7 @@ namespace SlimFrame
             renderTarget.Clear(new Color4(0, 0, 0, 0));
 
             Render2D?.Invoke(renderTarget);
-            HOD?.Render(renderTarget);
+            HUD?.Render(renderTarget);
 
             renderTarget.EndDraw();
         }
@@ -610,12 +610,12 @@ namespace SlimFrame
 
             if (IsDisposed) return;
 
-            if (HOD != null)
-                HOD.FramePerSecond = FramesPerSecond;
-            HOD.Update(time);
+            if (HUD != null)
+                HUD.FramePerSecond = FramesPerSecond;
+            HUD.Update(time);
 
             m_System2D.Update(time);
-            //HOD?.Update(frameTime);
+            //HUD?.Update(frameTime);
             UpdateFrame?.Invoke(timeLimited);
 
             if (FormObject.WindowState == oldState && oldState != FormWindowState.Minimized)
@@ -633,12 +633,12 @@ namespace SlimFrame
             float time = (float)frameTime;
             float timeLimited = Max(time, 0.01667f);
 
-            if (HOD.ActiveControl != HOD) return;
+            if (HUD.ActiveControl != HUD) return;
             if (!Focused) return;
 
             if (Resizing) return;
 
-            if (m_UserInput.IsMouseButtonPressed(0) && DXControl.IsMouseDown(HOD))
+            if (m_UserInput.IsMouseButtonPressed(0) && DXControl.IsMouseDown(HUD))
             {
                 int x = m_UserInput.MouseState_Current.X;
                 int y = m_UserInput.MouseState_Current.Y;
@@ -651,7 +651,7 @@ namespace SlimFrame
             
             if (type == typeof(FirstPersonCamera))
             {
-                if (DXControl.IsMouseOver(HOD))
+                if (DXControl.IsMouseOver(HUD))
                     Camera.Position += Camera.Front * (m_UserInput.MouseWheelMovement() * time);
 
                 if (m_UserInput.IsKeyPressed(Key.UpArrow) || m_UserInput.IsKeyPressed(Key.W))
@@ -669,7 +669,7 @@ namespace SlimFrame
                 ThirdPersonCamera cam1 = (ThirdPersonCamera)Camera;
                 float factor = (float) Pow(cam1.Distance / 10, 1.2);
 
-                if (DXControl.IsMouseOver(HOD))
+                if (DXControl.IsMouseOver(HUD))
                     cam1.Distance -= factor * m_UserInput.MouseWheelMovement() * time;
 
                 if (m_UserInput.IsKeyPressed(Key.UpArrow) || m_UserInput.IsKeyPressed(Key.W))
@@ -728,7 +728,7 @@ namespace SlimFrame
                 FormObject.WindowState = FormWindowState.Maximized;
                 // Changes the size of form Object to the screen size
                 FormObject.ClientSize = Screen.PrimaryScreen.Bounds.Size;
-                HOD.Focus();
+                HUD.Focus();
 
                 m_SwapChain.IsFullScreen = true;
                 // It should be only in this order, because if you changes the size of form after changing
@@ -859,7 +859,7 @@ namespace SlimFrame
             m_DepthStencilView?.Dispose();
         }
 
-        //private void GameWindow3D_HODCreated(HOD hod)
+        //private void GameWindow3D_HODCreated(HUD HUD)
         //{
         //    slide = new Slider("slide1")
         //    {
@@ -867,19 +867,19 @@ namespace SlimFrame
         //        TextColor = Color.Black,
         //        BackColor = Color.White,
         //        Location = new PointF(100, 50),
-        //        ClientSize = new SizeF(150, HOD.Font.Height),
+        //        ClientSize = new SizeF(150, HUD.Font.Height),
         //        TabIndex = 1,
         //        Maximum = 100.0f,
         //        Minimum = 0.0f,
         //        Value = 0.0f,
         //    };
-        //    HOD.Add(slide);
+        //    HUD.Add(slide);
 
         //    state = new UI.Label("label1")
         //    {
         //        Text = "",
         //        Location = new PointF(0, 0),
-        //        Height = HOD.Font.SizeInPoints,
+        //        Height = HUD.Font.SizeInPoints,
         //        Width = FormObject.Width,
         //        TextColor = Color.Black,
         //    };
@@ -917,7 +917,7 @@ namespace SlimFrame
         //        TextColor = Color.Black,
         //        BackColor = Color.DarkSlateBlue,
         //        Location = new PointF(100, 110),
-        //        Size = new SizeF(100, HOD.Font.Height),
+        //        Size = new SizeF(100, HUD.Font.Height),
         //        TabIndex = 1,
         //        HorizontalAllignment = TextHAllignment.Center,
         //        VerticalAllignment = TextVAllignment.Center,
@@ -929,7 +929,7 @@ namespace SlimFrame
         //        TextColor = Color.Black,
         //        BackColor = Color.DarkSlateBlue,
         //        Location = new PointF(btn.Right + 10, 110),
-        //        Size = new SizeF(100, HOD.Font.Height),
+        //        Size = new SizeF(100, HUD.Font.Height),
         //        TabIndex = 3,
         //        DropDownHeight = 100,
         //        HorizontalAllignment = TextHAllignment.Center,
@@ -976,15 +976,15 @@ namespace SlimFrame
         //        Size = new SizeF(100, 100),
         //    };
 
-        //    HOD.Add(state);
-        //    HOD.Add(vScroll);
-        //    HOD.Add(hScroll);
-        //    HOD.Add(btn);
-        //    HOD.Add(combo);
-        //    HOD.Add(check);
-        //    HOD.Add(radioBtn);
-        //    HOD.Add(radioBtn1);
-        //    HOD.Add(pic);
+        //    HUD.Add(state);
+        //    HUD.Add(vScroll);
+        //    HUD.Add(hScroll);
+        //    HUD.Add(btn);
+        //    HUD.Add(combo);
+        //    HUD.Add(check);
+        //    HUD.Add(radioBtn);
+        //    HUD.Add(radioBtn1);
+        //    HUD.Add(pic);
 
         //    //radioBtn1.Left = radioBtn.Right + 10;
         //    //check.Left = 100;

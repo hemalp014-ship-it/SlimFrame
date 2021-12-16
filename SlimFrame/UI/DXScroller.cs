@@ -533,8 +533,8 @@ namespace SlimFrame.UI
 
             if (!Visible) return;
 
-            HUD hod = m_parentHOD;
-            UserInput input = hod.UserInput;
+            HUD HUD = m_parentHOD;
+            UserInput input = HUD.UserInput;
 
             Update(frameTime, input);
         }

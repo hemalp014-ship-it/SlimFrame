@@ -677,7 +677,7 @@ namespace SlimFrame.UI
         }
 
         /// <summary>
-        /// Parent HOD of the Control.
+        /// Parent HUD of the Control.
         /// </summary>
         public HUD ParentHOD
         {
@@ -1000,8 +1000,8 @@ namespace SlimFrame.UI
         protected static void MouseLookUp(DXControl c)
         {
 
-            HUD hod = c.m_parentHOD;
-            UserInput input = hod.UserInput;
+            HUD HUD = c.m_parentHOD;
+            UserInput input = HUD.UserInput;
 
             MouseState state = input.MouseState_Current;        // Current state of mouse
             MouseState stateOld = input.MouseState_Previous;    // Last state of mouse
