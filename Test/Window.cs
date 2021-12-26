@@ -52,6 +52,26 @@ namespace Demo
             ClearColor = Color.Black;
         }
 
+        #endregion
+
+        #region Methods
+
+        private void InitScene(SlimDX.Direct3D11.Device device, DeviceContext devCon)
+        {
+            // Create our projection matrix.
+            m_ProjectionMatrix = Matrix.PerspectiveFovLH(fov, // this is 90 degrees in radians
+                                                         (float)FormObject.Width / (float)FormObject.Height,
+                                                         1f,
+                                                         1000.0f);
+
+
+
+            scene = new Scene(device, this);
+            scene.InitScene();
+
+            Camera = new ThirdPersonCamera(new Vector3(0, 0, 0), 19.0f, new Vector3(0, 1, 0));
+        }
+
         private void UserInput_KeyboardEvent()
         {
             bool isPressedR;
@@ -145,26 +165,6 @@ namespace Demo
 
         #endregion
 
-        #region Methods
-
-        private void InitScene(SlimDX.Direct3D11.Device device, DeviceContext devCon)
-        {
-            // Create our projection matrix.
-            m_ProjectionMatrix = Matrix.PerspectiveFovLH(fov, // this is 90 degrees in radians
-                                                         (float)FormObject.Width / (float)FormObject.Height,
-                                                         1f,
-                                                         1000.0f);
-
-
-
-            scene = new Scene(device, this);
-            scene.InitScene();
-
-            Camera = new ThirdPersonCamera(new Vector3(0, 0, 0), 19.0f, new Vector3(0, 1, 0));
-        }
-
-        #endregion
-
         #region Event Handler
 
         private void Window_DeviceCreated(SlimDX.Direct3D11.Device device)
@@ -233,7 +233,9 @@ namespace Demo
                 Text = "Slider Type",
                 TextColor = Color.Black,
                 BackColor = Color.FromArgb(200, Color.White),
-                ClientSize = new SizeF(200, HUD.Font.Height),
+                ClientSize = new SizeF(200, HUD.Font.Height + 10),
+                AutoSize = true,
+                HorizontalAllignment = TextHAllignment.Center,
             };
             combo.Items.AddRange(new string[]{"Linear","Exp e", "Exp 10" });
             HUD.Add(combo);

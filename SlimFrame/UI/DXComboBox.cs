@@ -301,7 +301,9 @@ namespace SlimFrame.UI
 
             SizeChanged += UpdateBack;
             SizeChanged += ComboBox_SizeChanged;
-            TextChanged += ComboBox_TextChanged;
+
+            SelectedIndexChanged += DXComboBox_SelectedIndexChanged;
+            //TextChanged += ComboBox_TextChanged;
             LocationChanged += UpdateBack;
             EnabledChanged += ComboBox_Enabled;
 
@@ -316,6 +318,14 @@ namespace SlimFrame.UI
             vScroll.ValueChanged += VScroll_ValueChanged;
             FontChanged += ComboBoxFontChnaged;
             //BoundChanged += ComboBox_BoundChanged;
+        }
+
+        private void DXComboBox_SelectedIndexChanged(DXComboBox arg1, int arg2)
+        {
+            ChangedText(this);
+
+            if (m_TextSize.Width > 0 && m_TextSize.Height > 0)
+                ClientSize = m_TextSize;
         }
 
         protected override void BoundPad(float pad)
@@ -647,13 +657,6 @@ namespace SlimFrame.UI
                 BackColor = Color.DimGray;
                 TextColor = Color.DarkGray;
             }
-        }
-
-        private void ComboBox_TextChanged(DXControl c)
-        {
-            ChangedText(this);
-
-            ClientSize = m_TextSize;
         }
 
         private void ComboBox_Loaded(DXControl obj)
