@@ -18,6 +18,13 @@ namespace SlimFrame.UI
         /// </summary>
         /// <param name="control">The control to be activated</param>
         void ActivateControl(DXControl control);
+
+        bool SelectFirstControl();
+        bool SelectLastControl();
+        void Add(DXControl ctrl);
+        void Sort();
+        void FindSelectable();
+        void Remove(DXControl ctrl);
     }
     
     public interface ITextControl

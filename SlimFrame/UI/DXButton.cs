@@ -26,29 +26,29 @@ namespace SlimFrame.UI
         protected TextVAllignment m_textVAllignment; // Stores Vertical text allignment
 
         //Auto size support
-        protected bool m_AutoSize = false; // Stores auto size state of button            
-
         private Color FontRenderColor;
         private Color BackRenderColor;
+
+        protected bool m_AutoSize = false; // Stores auto size state of button
 
         #endregion
 
         #region Properties
 
-        /// <summary>
-        /// BackColor of the Control
-        /// </summary>
-        public override Color BackColor
-        {
-            get
-            {
-                return m_BackColor;
-            }
-            set
-            {
-                m_BackColor = value;
-            }
-        }
+        ///// <summary>
+        ///// BackColor of the Control
+        ///// </summary>
+        //public override Color BackColor
+        //{
+        //    get
+        //    {
+        //        return m_BackColor;
+        //    }
+        //    set
+        //    {
+        //        m_BackColor = value;
+        //    }
+        //}
 
         /// <summary>
         /// Determines whether the size of control to be adjusted according the content or not.
