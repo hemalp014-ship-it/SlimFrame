@@ -26,23 +26,21 @@ namespace SlimFrame.UI
         protected TextVAllignment m_textVAllignment; // Stores Vertical text allignment
 
         protected bool m_AutoSize = false; // Stores auto size state of label
+        //private Color FontRenderColor;
 
-        private float m_width = 25;
-        private float m_height = 25;
-
-        private Color m_CheckBoxColor = Color.White;
-        private Color m_CheckBoxBorderColor = Color.DimGray;
+        //private Color m_CheckBoxColor = Color.White;
+        //private Color m_CheckBoxBorderColor = Color.DimGray;
         //private float m_CheckBorderWidth = 2.0f;
 
+        private float m_checkWidth = 25;
+        private float m_checkHeight = 25;
         private RectangleF checkBase;     // Pointer rectangle
 
         private float xOffset = 0.0f;    // Stores y-axis offset from the text bundaries.
         private float yOffset = 0.0f;    // Stores y-axis offset from the text bundaries.
-
         private bool m_Checked = false;   // Determines the checked state of the Checkbox
-
-        private Color FontRenderColor;
         private RectangleF m_TextBoundary;
+
 
         #endregion
 
@@ -66,6 +64,20 @@ namespace SlimFrame.UI
                 }
             }
         }
+        /// <summary>
+        /// Size of client area of slider
+        /// </summary>
+        public SizeF ClientSize
+        {
+            get
+            {
+                return new SizeF(m_Size.Width - xOffset, Math.Max(m_Size.Height, m_checkHeight));
+            }
+            set
+            {
+                Size = new SizeF(value.Width + xOffset, Math.Max(value.Height, m_checkHeight));
+            }
+        }
 
         /// <summary>
         /// Determines whether the size of control to be adjusted according the content or not.
@@ -83,20 +95,6 @@ namespace SlimFrame.UI
             }
         }
 
-        /// <summary>
-        /// Size of client area of slider
-        /// </summary>
-        public SizeF ClientSize
-        {
-            get
-            {
-                return new SizeF(m_Size.Width - xOffset, Math.Max(m_Size.Height, m_height));
-            }
-            set
-            {
-                Size = new SizeF(value.Width + xOffset, Math.Max(value.Height, m_height));
-            }
-        }
 
         /// <summary>
         /// Determines Horizontal Allignment of text
@@ -168,8 +166,8 @@ namespace SlimFrame.UI
             checkBase = new RectangleF();
             m_TextBoundary = new RectangleF();
 
-            checkBase.Width = m_width;
-            checkBase.Height = m_height;
+            checkBase.Width = m_checkWidth;
+            checkBase.Height = m_checkHeight;
 
             m_BorderWidth = 1.0f;
 
@@ -181,22 +179,21 @@ namespace SlimFrame.UI
 
             SizeChanged += UpdateCheck;
             LocationChanged += UpdateCheck;
-            Click += CheckBox_Click; ;
+            Click += CheckBox_Click;
             TextChanged += CheckBox_TextChanged;
-            EnabledChanged += CheckBox_EnabledChanged;
-
-            MouseOver += CheckBox_MouseOver;
-            MouseOut += CheckBox_MouseOut;
-
-            TextColorChanged += CheckBox_TextColorChanged;
-
             UpdateCheck(this);
+
+            //MouseOver += CheckBox_MouseOver;
+            //MouseOut += CheckBox_MouseOut;
+            //EnabledChanged += CheckBox_EnabledChanged;
+            //TextColorChanged += CheckBox_TextColorChanged;
+
         }
 
-        private void CheckBox_TextColorChanged(DXControl obj)
-        {
-            FontRenderColor = m_TextColor;
-        }
+        //private void CheckBox_TextColorChanged(DXControl obj)
+        //{
+        //    //FontRenderColor = m_TextColor;
+        //}
 
         /// <summary>
         /// Initializes the 2D rendering capability
@@ -267,21 +264,21 @@ namespace SlimFrame.UI
 
         #region Event Handler
 
-        private void CheckBox_EnabledChanged(DXControl c)
-        {
-            if (Enabled)
-            {
-                m_CheckBoxColor = Color.White;
-                m_TextColor = FontRenderColor;
-            }
-            else
-            {
-                m_CheckBoxColor = Color.DarkGray;
-                m_CheckBoxBorderColor = Color.DimGray;
+        //private void CheckBox_EnabledChanged(DXControl c)
+        //{
+        //    if (Enabled)
+        //    {
+        //        //m_CheckBoxColor = Color.White;
+        //        //m_TextColor = FontRenderColor;
+        //    }
+        //    else
+        //    {
+        //        //m_CheckBoxColor = Color.DarkGray;
+        //        //m_CheckBoxBorderColor = Color.DimGray;
 
-                m_TextColor = Color.DarkGray;
-            }
-        }
+        //        //m_TextColor = Color.DarkGray;
+        //    }
+        //}
 
         private void CheckBox_TextChanged(DXControl c)
         {
@@ -292,11 +289,11 @@ namespace SlimFrame.UI
 
         private void UpdateCheck(DXControl c)
         {
-            xOffset = m_width + 2.0f;
+            xOffset = m_checkWidth + 2.0f;
 
-            if (m_TextSize.Height > m_height)
+            if (m_TextSize.Height > m_checkHeight)
             {
-                yOffset = (m_TextSize.Height - m_height / 2) / 2.0f;
+                yOffset = (m_TextSize.Height - m_checkHeight / 2) / 2.0f;
             }
 
             checkBase.X = m_Location.X;
@@ -308,17 +305,17 @@ namespace SlimFrame.UI
             m_TextBoundary.Size = ClientSize;
         }
 
-        private void CheckBox_MouseOut(DXControl ctrl)
-        {
-            if (Enabled)
-                m_CheckBoxBorderColor = Color.DimGray;
-        }
+        //private void CheckBox_MouseOut(DXControl ctrl)
+        //{
+        //    if (Enabled)
+        //        m_CheckBoxBorderColor = Color.DimGray;
+        //}
 
-        private void CheckBox_MouseOver(DXControl ctrl)
-        {
-            if (Enabled)
-                m_CheckBoxBorderColor = Color.RoyalBlue;
-        }
+        //private void CheckBox_MouseOver(DXControl ctrl)
+        //{
+        //    if (Enabled)
+        //        m_CheckBoxBorderColor = Color.RoyalBlue;
+        //}
 
         private void CheckBox_Click(DXControl ctrl)
         {

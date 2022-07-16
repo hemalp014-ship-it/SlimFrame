@@ -15,3 +15,5 @@ D:\Programming\3D Programming\Framework 1.0\Windows\SlimFrame\SlimFrame\Test\obj
 D:\Programming\3D Programming\Framework 1.0\Windows\SlimFrame\SlimFrame\Test\obj\x64\Release\Test.csproj.CopyComplete
 D:\Programming\3D Programming\Framework 1.0\Windows\SlimFrame\SlimFrame\Test\obj\x64\Release\Test.exe
 D:\Programming\3D Programming\Framework 1.0\Windows\SlimFrame\SlimFrame\Test\obj\x64\Release\Test.pdb
+D:\Programming\3D Programming\Framework 1.0\Windows\SlimFrame\SlimFrame\Test\obj\x64\Release\Test.csproj.AssemblyReference.cache
+D:\Programming\3D Programming\Framework 1.0\Windows\SlimFrame\SlimFrame\Test\obj\x64\Release\Test.csproj.SuggestedBindingRedirects.cache
