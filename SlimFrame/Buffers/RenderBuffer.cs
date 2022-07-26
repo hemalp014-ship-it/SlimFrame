@@ -57,7 +57,7 @@ namespace SlimFrame.Buffers
         /// </summary>
         /// <param name="WVP">WVP matrix to the shader</param>
         /// <param name="world">World matrix to the shader</param>
-        public void Update(Matrix Proj, Matrix View, Matrix world, Vector3 CameraPosition)
+        public void Update(Matrix Proj, Matrix View, Matrix world, Vector3 CameraPosition, float pad)
         {
             ds = dev.ImmediateContext.MapSubresource(buffer, MapMode.WriteDiscard, MapFlags.None).Data;
             unsafe
@@ -67,7 +67,7 @@ namespace SlimFrame.Buffers
                 pf->View = Matrix.Transpose(View);
                 pf->world = Matrix.Transpose(world);
                 pf->CamPos = CameraPosition;
-                pf->pad = 1.0f;
+                pf->pad = pad;
             }
             dev.ImmediateContext.UnmapSubresource(buffer, 0);
         }

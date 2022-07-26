@@ -2,7 +2,11 @@ D:\Programming\3D Programming\Framework 1.0\Windows\SlimFrame\SlimFrame\bin\Debu
 D:\Programming\3D Programming\Framework 1.0\Windows\SlimFrame\SlimFrame\bin\Debug\Cube\Assets\UI\UI.png
 D:\Programming\3D Programming\Framework 1.0\Windows\SlimFrame\SlimFrame\bin\Debug\Cube\SlimFrame.dll
 D:\Programming\3D Programming\Framework 1.0\Windows\SlimFrame\SlimFrame\bin\Debug\Cube\SlimFrame.pdb
+D:\Programming\3D Programming\Framework 1.0\Windows\SlimFrame\SlimFrame\bin\AnyCPU\Debug\Assets\Shaders\effectDx11.fx
+D:\Programming\3D Programming\Framework 1.0\Windows\SlimFrame\SlimFrame\bin\AnyCPU\Debug\Assets\UI\UI.png
+D:\Programming\3D Programming\Framework 1.0\Windows\SlimFrame\SlimFrame\bin\AnyCPU\Debug\SlimFrame.dll
+D:\Programming\3D Programming\Framework 1.0\Windows\SlimFrame\SlimFrame\bin\AnyCPU\Debug\SlimFrame.pdb
+D:\Programming\3D Programming\Framework 1.0\Windows\SlimFrame\SlimFrame\SlimFrame\obj\Debug\SlimFrame.csproj.AssemblyReference.cache
 D:\Programming\3D Programming\Framework 1.0\Windows\SlimFrame\SlimFrame\SlimFrame\obj\Debug\SlimFrame.csproj.CoreCompileInputs.cache
 D:\Programming\3D Programming\Framework 1.0\Windows\SlimFrame\SlimFrame\SlimFrame\obj\Debug\SlimFrame.dll
 D:\Programming\3D Programming\Framework 1.0\Windows\SlimFrame\SlimFrame\SlimFrame\obj\Debug\SlimFrame.pdb
-D:\Programming\3D Programming\Framework 1.0\Windows\SlimFrame\SlimFrame\SlimFrame\obj\Debug\SlimFrame.csproj.AssemblyReference.cache

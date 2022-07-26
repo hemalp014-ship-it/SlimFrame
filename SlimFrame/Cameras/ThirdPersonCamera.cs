@@ -65,7 +65,7 @@ namespace SlimFrame.Cameras
 		public ThirdPersonCamera(Vector3 origin, float dist, Vector3 up)
 		{
 			m_Up = up;
-			m_Look = new Vector3(0, 0, 1);
+			m_Look = -new Vector3(0, 0, 1);
 			m_Look.Normalize();
 
 			m_LookAt = m_Look;
@@ -85,7 +85,7 @@ namespace SlimFrame.Cameras
 		public ThirdPersonCamera(Vector3 origin, float dist, Vector3 up, float pitch, float yaw, float roll)
 		{
 			m_Up = up;
-			m_Look = new Vector3(0, 0, 1);
+			m_Look = -new Vector3(0, 0, 1);
 			m_Look.Normalize();
 
 			m_LookAt = m_Look;
@@ -107,13 +107,13 @@ namespace SlimFrame.Cameras
 			base.Update();
 			Vector3 look = m_Look;
 
-			m_LookAt = m_Origin - Position;
+			m_LookAt = -(m_Origin - Position);
 			m_LookAt.Normalize();
 
 			look = Vector3.TransformCoordinate(look, m_Transformation);
 			look.Normalize();
 
-			m_Position = look * l + m_Origin;
+			m_Position = -look * l + m_Origin;
 
 			m_viewMatrix = Matrix.LookAtLH(m_Position, m_Origin, m_Up);
 		}

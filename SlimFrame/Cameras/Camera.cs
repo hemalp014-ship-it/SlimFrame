@@ -22,10 +22,15 @@ namespace SlimFrame.Cameras
 
 		protected Vector3 m_Position;	//The position of camera. 
 		protected Vector3 m_oPosition;	//The old position of camera. 
-		protected Vector3 m_LookAt;		//The position where camera is looking.
-		protected Vector3 m_Look;		//The position where camera is looking.
-		protected Vector3 m_Up;			//The up direction of camera.
-		protected Vector3 m_Left;		//The left direction of camera.
+		protected Vector3 m_LookAt;     //The position where camera is looking.
+
+		protected Vector3 m_Look;       //The look direction of camera.
+		protected Vector3 m_Up;         //The up direction of camera.
+		protected Vector3 m_Left;       //The left direction of camera.
+
+		protected Vector3 m_cLook;      //The look direction of camera.
+		protected Vector3 m_cUp;        //The up direction of camera.
+		protected Vector3 m_cLeft;      //The left direction of camera.
 
 		protected Vector3 m_rot;        //The rotation components of camera along x-axis, y-axis & z-axis respectively
 
@@ -125,7 +130,7 @@ namespace SlimFrame.Cameras
 		{
 			get
 			{
-				return Vector3.Normalize(m_Up);
+				return m_cUp;
 			}
 		}
 
@@ -136,7 +141,7 @@ namespace SlimFrame.Cameras
 		{
 			get
 			{
-				return Vector3.Normalize(m_Look);
+				return m_cLook;
 			}
 		}
 
@@ -147,7 +152,7 @@ namespace SlimFrame.Cameras
 		{
 			get
 			{
-				return -Front;
+				return -m_cLook;
 			}
 		}
 
@@ -158,9 +163,7 @@ namespace SlimFrame.Cameras
 		{
 			get
 			{
-				Vector3 right = Vector3.Cross(m_Up, m_LookAt);
-				right.Normalize();
-				return right;
+				return -m_cLeft;
 			}
 		}
 
@@ -171,7 +174,7 @@ namespace SlimFrame.Cameras
 		{
 			get
 			{
-				return -Right;
+				return m_cLeft;
 			}
 		}
 
@@ -182,7 +185,7 @@ namespace SlimFrame.Cameras
 		{
 			get
 			{
-				return -Up;
+				return -m_cUp;
 			}
 		}
 
@@ -221,6 +224,7 @@ namespace SlimFrame.Cameras
 			m_Look = -m_Position;
 			m_Look.Normalize();
 			m_Up = new Vector3(0, 1, 0);
+			m_Left = Vector3.Cross(m_Up, m_Look);
 		}
 
 		/// <summary>
@@ -235,6 +239,8 @@ namespace SlimFrame.Cameras
 			m_Look = target - pos;
 			m_Look.Normalize();
 			m_Up = up;
+			m_Left = Vector3.Cross(m_Up, m_Look);
+			m_rot = new Vector3(0, 0, 0);
 		}
 
 		/// <summary>
@@ -252,6 +258,7 @@ namespace SlimFrame.Cameras
 			m_Look = target - pos;
 			m_Look.Normalize();
 			m_Up = up;
+			m_Left = Vector3.Cross(m_Up, m_Look);
 			m_rot = new Vector3(pitch, yaw, roll);
 		}
 
@@ -274,6 +281,11 @@ namespace SlimFrame.Cameras
 		public virtual void Update()
 		{
 			m_Transformation = Matrix.RotationYawPitchRoll(m_rot.Y, m_rot.X, m_rot.Z);
+
+			m_cUp = Vector3.TransformCoordinate(m_Up, m_Transformation);
+			m_cLook = Vector3.TransformCoordinate(m_Look, m_Transformation); // why - in look
+
+			m_cLeft = Vector3.Cross(m_cLook, m_cUp);
 		}
 
 		#endregion
